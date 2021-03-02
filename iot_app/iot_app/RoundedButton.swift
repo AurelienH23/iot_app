@@ -13,11 +13,7 @@ class RoundedButton: UIButton {
     
     init(image: String) {
         super.init(frame: .zero)
-        setupViews()
-    }
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+        setImage(UIImage(named: image)?.withRenderingMode(.alwaysTemplate), for: .normal)
         setupViews()
     }
     
@@ -31,8 +27,9 @@ class RoundedButton: UIButton {
         anchor(width: .standardTouchSpace, height: .standardTouchSpace)
         layer.cornerRadius = .largeCornerRadius
         layer.borderWidth = 1
-        layer.borderColor = UIColor.white.cgColor
+        layer.borderColor = UIColor.borderColor?.cgColor
         backgroundColor = .elementBackground
+        tintColor = .textColor
     }
 
 }

@@ -11,7 +11,7 @@ class HomeViewController: UIViewController {
 
     // MARK: View elements
 
-    private let profileButton = RoundedButton()
+    private let profileButton = RoundedButton(image: "ic_account")
     private let titleLabel = WelcomeTitle(name: "TEST")
 
     // MARK: Lifecycle

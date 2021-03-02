@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: UIView
 extension UIView {
 
     func addSubviews(_ views: UIView...) {
@@ -66,13 +67,17 @@ extension UIView {
 
 }
 
+// MARK: UIColor
 extension UIColor {
 
     static let backgroundColor = UIColor(named: "backgroundColor")
     static let elementBackground = UIColor(named: "elementBackground")
+    static let textColor = UIColor(named: "textColor")
+    static let borderColor = UIColor(named: "borderColor")
 
 }
 
+// MARK: CGFloat
 extension CGFloat {
 
     static var topPadding: CGFloat {
