@@ -130,13 +130,11 @@
 				0DD0BD4A25ED996D00C30B4D /* SceneDelegate.swift */,
 				0DD0BDE325EEA8AC00C30B4D /* Utils */,
 				0DD0BDC825EEA82B00C30B4D /* Models */,
+				0DD0BE0525EEC48D00C30B4D /* Views */,
 				0DD0BDA825ED9EDC00C30B4D /* HomeViewController.swift */,
 				0DD0BDBE25EE92C200C30B4D /* WelcomeTitle.swift */,
-				0DD0BDC325EE92E400C30B4D /* RoundedButton.swift */,
 				0DD0BE0025EEC1D100C30B4D /* FilterButton.swift */,
 				0DD0BDFB25EEBCBE00C30B4D /* LightCell.swift */,
-				0DD0BDF125EEB6E900C30B4D /* VStack.swift */,
-				0DD0BDF625EEB73000C30B4D /* HStack.swift */,
 			);
 			path = iot_app;
 			sourceTree = "<group>";
@@ -189,6 +187,16 @@
 				0DD0BDEC25EEACC900C30B4D /* DataManager.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		0DD0BE0525EEC48D00C30B4D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0DD0BDC325EE92E400C30B4D /* RoundedButton.swift */,
+				0DD0BDF125EEB6E900C30B4D /* VStack.swift */,
+				0DD0BDF625EEB73000C30B4D /* HStack.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

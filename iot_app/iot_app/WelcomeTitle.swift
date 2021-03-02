@@ -9,15 +9,10 @@ import UIKit
 
 class WelcomeTitle: UILabel {
 
-    // MARK: Properties
-
-    private var username: String
-
     // MARK: Lifecycle
 
-    init(name: String) {
-        username = name
-        super.init(frame: .zero)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setupViews()
     }
 
@@ -29,8 +24,12 @@ class WelcomeTitle: UILabel {
 
     private func setupViews() {
         numberOfLines = 2
+    }
+
+    internal func welcomeTheUser(named: String?) {
+        guard let username = named else { return }
         let generatedText = NSMutableAttributedString(attributedString: NSAttributedString(string: "Welcome home,\n", attributes: [.font: UIFont.boldSystemFont(ofSize: 30)]))
-        generatedText.append(NSAttributedString(string: "Arthur", attributes: [.font: UIFont.systemFont(ofSize: 30)]))
+        generatedText.append(NSAttributedString(string: username, attributes: [.font: UIFont.systemFont(ofSize: 30)]))
         attributedText = generatedText
     }
 

@@ -18,7 +18,7 @@ class HomeViewController: UIViewController {
     // MARK: View elements
 
     private let profileButton = RoundedButton(image: "ic_account")
-    private let titleLabel = WelcomeTitle(name: "TEST")
+    private let titleLabel = WelcomeTitle()
     private let lightsFilter = FilterButton(title: "Lights")
     private let rollerShuttersFilter = FilterButton(title: "Roller shutters")
     private let heatersFilter = FilterButton(title: "Heaters")
@@ -35,7 +35,23 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupObservers()
         setupViews()
+        
+    }
+
+    private func setupObservers() {
+        DataManager.shared.userObservers.append { updatedUser in
+            DispatchQueue.main.async {
+                self.titleLabel.welcomeTheUser(named: updatedUser?.nameToDisplay())
+            }
+        }
+        
+        DataManager.shared.devicesObservers.append { _ in
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
     }
 
     private func setupViews() {
@@ -55,11 +71,13 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return DataManager.shared.devices.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: CellId.light.rawValue, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId.light.rawValue, for: indexPath) as! LightCell
+        cell.titleLabel.text = "Texte a afficher" // DataManager.shared.devices[indexPath.item]
+        return cell
     }
 
 }

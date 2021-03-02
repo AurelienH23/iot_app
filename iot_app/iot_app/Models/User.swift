@@ -12,4 +12,8 @@ struct User: Decodable {
     private let lastName: String
     private let birthDate: Int
     private let address: Address
+
+    internal func nameToDisplay() -> String {
+        return firstName
+    }
 }

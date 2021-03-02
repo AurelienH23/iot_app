@@ -11,8 +11,20 @@ class DataManager {
 
     // MARK: Properties
 
-    private(set) var user: User? = nil
-    private(set) var devices = [Device]()
+    private(set) var user: User? = nil {
+        didSet {
+            userObservers.forEach({$0(user)})
+        }
+    }
+
+    private(set) var devices = [Device]() {
+        didSet {
+            devicesObservers.forEach({$0(devices)})
+        }
+    }
+
+    internal var userObservers = [(User?) -> Void]()
+    internal var devicesObservers = [([Device]) -> Void]()
 
     // MARK: Lifecycle
 
