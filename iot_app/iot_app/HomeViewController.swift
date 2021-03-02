@@ -9,13 +9,27 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    // MARK: Properties
+
+    enum CellId: String {
+        case light
+    }
+
     // MARK: View elements
 
     private let profileButton = RoundedButton(image: "ic_account")
     private let titleLabel = WelcomeTitle(name: "TEST")
     private let lightsFilter = FilterButton(title: "Lights")
     private let rollerShuttersFilter = FilterButton(title: "Roller shutters")
-    private let heatersFilter = FilterButton(title: "heaters")
+    private let heatersFilter = FilterButton(title: "Heaters")
+    private lazy var collectionView: UICollectionView = {
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        cv.backgroundColor = .clear
+        cv.register(LightCell.self, forCellWithReuseIdentifier: CellId.light.rawValue)
+        cv.dataSource = self
+        cv.delegate = self
+        return cv
+    }()
 
     // MARK: Lifecycle
 
@@ -28,59 +42,45 @@ class HomeViewController: UIViewController {
         view.backgroundColor = .backgroundColor
         let filters = HStack.items([lightsFilter, rollerShuttersFilter, heatersFilter], spaced: .smallSpace)
         lightsFilter.isFilterSelected = true
-        view.addSubviews(profileButton, titleLabel, filters)
+        view.addSubviews(profileButton, titleLabel, filters, collectionView)
         profileButton.anchor(top: view.topAnchor, right: view.rightAnchor, paddingTop: .topPadding + .mediumSpace, paddingRight: .extraLargeSpace)
         titleLabel.anchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 100, paddingLeft: .extraLargeSpace, paddingRight: .extraLargeSpace)
         filters.anchor(top: titleLabel.bottomAnchor, left: titleLabel.leftAnchor, paddingTop: .extraLargeSpace)
+        collectionView.anchor(top: filters.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
     }
 
 }
 
-class FilterButton: UIButton {
-    
-    // MARK: Properties
-    
-    internal var isFilterSelected = false {
-        didSet {
-            updateViews(selected: isFilterSelected)
-        }
-    }
-    
-    // MARK: Lifecycle
-    
-    init(title: String) {
-        super.init(frame: .zero)
-        setTitle(title, for: .normal)
-        setupViews()
-        updateViews(selected: false)
-        addTarget(self, action: #selector(didSelectFilter), for: .touchUpInside)
+// MARK: Collection view
+extension HomeViewController: UICollectionViewDataSource {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
     }
 
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return collectionView.dequeueReusableCell(withReuseIdentifier: CellId.light.rawValue, for: indexPath)
     }
 
-    override var intrinsicContentSize: CGSize {
-        let size = super.intrinsicContentSize
-        let padding: CGFloat = 13
-        return CGSize(width: size.width + 2 * padding, height: size.height)
-    }
-    
-    // MARK: Custom funcs
-    
-    private func setupViews() {
-        anchor(height: 30)
-        layer.cornerRadius = 15
-        titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
+}
+
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let cellWidth = (collectionView.frame.width - 2 * .extraLargeSpace - .mediumSpace) / 2
+        return CGSize(width: cellWidth, height: 120)
     }
 
-    private func updateViews(selected: Bool) {
-        backgroundColor = selected ? .accentColor : .elementBackground
-        setTitleColor(selected ? .white : .textGray, for: .normal)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return .mediumSpace
     }
 
-    @objc private func didSelectFilter() {
-        isFilterSelected.toggle()
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return .mediumSpace
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: .mediumSpace, left: .extraLargeSpace, bottom: .extraLargeSpace, right: .extraLargeSpace)
     }
 
 }

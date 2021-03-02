@@ -26,6 +26,8 @@
 		0DD0BDED25EEACC900C30B4D /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0BDEC25EEACC900C30B4D /* DataManager.swift */; };
 		0DD0BDF225EEB6E900C30B4D /* VStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0BDF125EEB6E900C30B4D /* VStack.swift */; };
 		0DD0BDF725EEB73000C30B4D /* HStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0BDF625EEB73000C30B4D /* HStack.swift */; };
+		0DD0BDFC25EEBCBE00C30B4D /* LightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0BDFB25EEBCBE00C30B4D /* LightCell.swift */; };
+		0DD0BE0125EEC1D100C30B4D /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0BE0025EEC1D100C30B4D /* FilterButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		0DD0BDEC25EEACC900C30B4D /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		0DD0BDF125EEB6E900C30B4D /* VStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VStack.swift; sourceTree = "<group>"; };
 		0DD0BDF625EEB73000C30B4D /* HStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HStack.swift; sourceTree = "<group>"; };
+		0DD0BDFB25EEBCBE00C30B4D /* LightCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightCell.swift; sourceTree = "<group>"; };
+		0DD0BE0025EEC1D100C30B4D /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +133,8 @@
 				0DD0BDA825ED9EDC00C30B4D /* HomeViewController.swift */,
 				0DD0BDBE25EE92C200C30B4D /* WelcomeTitle.swift */,
 				0DD0BDC325EE92E400C30B4D /* RoundedButton.swift */,
+				0DD0BE0025EEC1D100C30B4D /* FilterButton.swift */,
+				0DD0BDFB25EEBCBE00C30B4D /* LightCell.swift */,
 				0DD0BDF125EEB6E900C30B4D /* VStack.swift */,
 				0DD0BDF625EEB73000C30B4D /* HStack.swift */,
 			);
@@ -316,11 +322,13 @@
 			files = (
 				0DD0BDBA25EE8CC100C30B4D /* Extensions.swift in Sources */,
 				0DD0BDA925ED9EDC00C30B4D /* HomeViewController.swift in Sources */,
+				0DD0BDFC25EEBCBE00C30B4D /* LightCell.swift in Sources */,
 				0DD0BDE525EEA8C400C30B4D /* Network.swift in Sources */,
 				0DD0BD5325ED996D00C30B4D /* iot_app.xcdatamodeld in Sources */,
 				0DD0BDD525EEA85400C30B4D /* Device.swift in Sources */,
 				0DD0BDBF25EE92C200C30B4D /* WelcomeTitle.swift in Sources */,
 				0DD0BDCA25EEA83600C30B4D /* FetchData.swift in Sources */,
+				0DD0BE0125EEC1D100C30B4D /* FilterButton.swift in Sources */,
 				0DD0BDF225EEB6E900C30B4D /* VStack.swift in Sources */,
 				0DD0BDC425EE92E400C30B4D /* RoundedButton.swift in Sources */,
 				0DD0BD4925ED996D00C30B4D /* AppDelegate.swift in Sources */,
