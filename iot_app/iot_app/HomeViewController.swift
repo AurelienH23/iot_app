@@ -18,12 +18,7 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchData()
         setupViews()
-    }
-
-    private func fetchData() {
-        Network.session.fetchData()
     }
 
     private func setupViews() {

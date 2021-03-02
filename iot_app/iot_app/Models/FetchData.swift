@@ -8,6 +8,6 @@
 import Foundation
 
 struct FetchData: Decodable {
-    private let devices: [Device]
-    private let user: User
+    private(set) var devices: [Device]
+    private(set) var user: User
 }
