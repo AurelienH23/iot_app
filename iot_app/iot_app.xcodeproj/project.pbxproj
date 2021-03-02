@@ -18,6 +18,11 @@
 		0DD0BDBA25EE8CC100C30B4D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0BDB925EE8CC100C30B4D /* Extensions.swift */; };
 		0DD0BDBF25EE92C200C30B4D /* WelcomeTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0BDBE25EE92C200C30B4D /* WelcomeTitle.swift */; };
 		0DD0BDC425EE92E400C30B4D /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0BDC325EE92E400C30B4D /* RoundedButton.swift */; };
+		0DD0BDCA25EEA83600C30B4D /* FetchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0BDC925EEA83600C30B4D /* FetchData.swift */; };
+		0DD0BDD525EEA85400C30B4D /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0BDD425EEA85400C30B4D /* Device.swift */; };
+		0DD0BDDA25EEA86A00C30B4D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0BDD925EEA86A00C30B4D /* User.swift */; };
+		0DD0BDDF25EEA87700C30B4D /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0BDDE25EEA87700C30B4D /* Address.swift */; };
+		0DD0BDE525EEA8C400C30B4D /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0BDE425EEA8C400C30B4D /* Network.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +60,11 @@
 		0DD0BDB925EE8CC100C30B4D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0DD0BDBE25EE92C200C30B4D /* WelcomeTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeTitle.swift; sourceTree = "<group>"; };
 		0DD0BDC325EE92E400C30B4D /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		0DD0BDC925EEA83600C30B4D /* FetchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchData.swift; sourceTree = "<group>"; };
+		0DD0BDD425EEA85400C30B4D /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		0DD0BDD925EEA86A00C30B4D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0DD0BDDE25EEA87700C30B4D /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		0DD0BDE425EEA8C400C30B4D /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,10 +118,11 @@
 				0DD0BD8125ED9AEF00C30B4D /* Support Files */,
 				0DD0BD4825ED996D00C30B4D /* AppDelegate.swift */,
 				0DD0BD4A25ED996D00C30B4D /* SceneDelegate.swift */,
+				0DD0BDE325EEA8AC00C30B4D /* Utils */,
+				0DD0BDC825EEA82B00C30B4D /* Models */,
 				0DD0BDA825ED9EDC00C30B4D /* HomeViewController.swift */,
 				0DD0BDBE25EE92C200C30B4D /* WelcomeTitle.swift */,
 				0DD0BDC325EE92E400C30B4D /* RoundedButton.swift */,
-				0DD0BDB925EE8CC100C30B4D /* Extensions.swift */,
 			);
 			path = iot_app;
 			sourceTree = "<group>";
@@ -143,6 +154,26 @@
 				0DD0BD5125ED996D00C30B4D /* iot_app.xcdatamodeld */,
 			);
 			path = "Support Files";
+			sourceTree = "<group>";
+		};
+		0DD0BDC825EEA82B00C30B4D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0DD0BDC925EEA83600C30B4D /* FetchData.swift */,
+				0DD0BDD425EEA85400C30B4D /* Device.swift */,
+				0DD0BDD925EEA86A00C30B4D /* User.swift */,
+				0DD0BDDE25EEA87700C30B4D /* Address.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0DD0BDE325EEA8AC00C30B4D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0DD0BDB925EE8CC100C30B4D /* Extensions.swift */,
+				0DD0BDE425EEA8C400C30B4D /* Network.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,10 +307,15 @@
 			files = (
 				0DD0BDBA25EE8CC100C30B4D /* Extensions.swift in Sources */,
 				0DD0BDA925ED9EDC00C30B4D /* HomeViewController.swift in Sources */,
+				0DD0BDE525EEA8C400C30B4D /* Network.swift in Sources */,
 				0DD0BD5325ED996D00C30B4D /* iot_app.xcdatamodeld in Sources */,
+				0DD0BDD525EEA85400C30B4D /* Device.swift in Sources */,
 				0DD0BDBF25EE92C200C30B4D /* WelcomeTitle.swift in Sources */,
+				0DD0BDCA25EEA83600C30B4D /* FetchData.swift in Sources */,
 				0DD0BDC425EE92E400C30B4D /* RoundedButton.swift in Sources */,
 				0DD0BD4925ED996D00C30B4D /* AppDelegate.swift in Sources */,
+				0DD0BDDA25EEA86A00C30B4D /* User.swift in Sources */,
+				0DD0BDDF25EEA87700C30B4D /* Address.swift in Sources */,
 				0DD0BD4B25ED996D00C30B4D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
