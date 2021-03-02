@@ -15,6 +15,7 @@
 		0DD0BD6325ED996E00C30B4D /* iot_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0BD6225ED996E00C30B4D /* iot_appTests.swift */; };
 		0DD0BD6E25ED996E00C30B4D /* iot_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0BD6D25ED996E00C30B4D /* iot_appUITests.swift */; };
 		0DD0BDA925ED9EDC00C30B4D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0BDA825ED9EDC00C30B4D /* HomeViewController.swift */; };
+		0DD0BDBA25EE8CC100C30B4D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0BDB925EE8CC100C30B4D /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		0DD0BD6D25ED996E00C30B4D /* iot_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iot_appUITests.swift; sourceTree = "<group>"; };
 		0DD0BD6F25ED996E00C30B4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0DD0BDA825ED9EDC00C30B4D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		0DD0BDB925EE8CC100C30B4D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				0DD0BD4825ED996D00C30B4D /* AppDelegate.swift */,
 				0DD0BD4A25ED996D00C30B4D /* SceneDelegate.swift */,
 				0DD0BDA825ED9EDC00C30B4D /* HomeViewController.swift */,
+				0DD0BDB925EE8CC100C30B4D /* Extensions.swift */,
 			);
 			path = iot_app;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DD0BDBA25EE8CC100C30B4D /* Extensions.swift in Sources */,
 				0DD0BDA925ED9EDC00C30B4D /* HomeViewController.swift in Sources */,
 				0DD0BD5325ED996D00C30B4D /* iot_app.xcdatamodeld in Sources */,
 				0DD0BD4925ED996D00C30B4D /* AppDelegate.swift in Sources */,
@@ -366,7 +370,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -421,7 +425,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -439,7 +443,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TG34ANFDUK;
 				INFOPLIST_FILE = "iot_app/Support Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -459,7 +463,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TG34ANFDUK;
 				INFOPLIST_FILE = "iot_app/Support Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
