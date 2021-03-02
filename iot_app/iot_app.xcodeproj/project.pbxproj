@@ -24,6 +24,8 @@
 		0DD0BDDF25EEA87700C30B4D /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0BDDE25EEA87700C30B4D /* Address.swift */; };
 		0DD0BDE525EEA8C400C30B4D /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0BDE425EEA8C400C30B4D /* Network.swift */; };
 		0DD0BDED25EEACC900C30B4D /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0BDEC25EEACC900C30B4D /* DataManager.swift */; };
+		0DD0BDF225EEB6E900C30B4D /* VStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0BDF125EEB6E900C30B4D /* VStack.swift */; };
+		0DD0BDF725EEB73000C30B4D /* HStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0BDF625EEB73000C30B4D /* HStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		0DD0BDDE25EEA87700C30B4D /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		0DD0BDE425EEA8C400C30B4D /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		0DD0BDEC25EEACC900C30B4D /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		0DD0BDF125EEB6E900C30B4D /* VStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VStack.swift; sourceTree = "<group>"; };
+		0DD0BDF625EEB73000C30B4D /* HStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +129,8 @@
 				0DD0BDA825ED9EDC00C30B4D /* HomeViewController.swift */,
 				0DD0BDBE25EE92C200C30B4D /* WelcomeTitle.swift */,
 				0DD0BDC325EE92E400C30B4D /* RoundedButton.swift */,
+				0DD0BDF125EEB6E900C30B4D /* VStack.swift */,
+				0DD0BDF625EEB73000C30B4D /* HStack.swift */,
 			);
 			path = iot_app;
 			sourceTree = "<group>";
@@ -315,10 +321,12 @@
 				0DD0BDD525EEA85400C30B4D /* Device.swift in Sources */,
 				0DD0BDBF25EE92C200C30B4D /* WelcomeTitle.swift in Sources */,
 				0DD0BDCA25EEA83600C30B4D /* FetchData.swift in Sources */,
+				0DD0BDF225EEB6E900C30B4D /* VStack.swift in Sources */,
 				0DD0BDC425EE92E400C30B4D /* RoundedButton.swift in Sources */,
 				0DD0BD4925ED996D00C30B4D /* AppDelegate.swift in Sources */,
 				0DD0BDDA25EEA86A00C30B4D /* User.swift in Sources */,
 				0DD0BDDF25EEA87700C30B4D /* Address.swift in Sources */,
+				0DD0BDF725EEB73000C30B4D /* HStack.swift in Sources */,
 				0DD0BDED25EEACC900C30B4D /* DataManager.swift in Sources */,
 				0DD0BD4B25ED996D00C30B4D /* SceneDelegate.swift in Sources */,
 			);

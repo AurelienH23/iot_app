@@ -72,8 +72,10 @@ extension UIColor {
 
     static let backgroundColor = UIColor(named: "backgroundColor")
     static let elementBackground = UIColor(named: "elementBackground")
-    static let textColor = UIColor(named: "textColor")
     static let borderColor = UIColor(named: "borderColor")
+    static let textColor = UIColor(named: "textColor")
+    static let textGray = UIColor(named: "textGray")
+    static let accentColor = UIColor(named: "AccentColor")
 
 }
 
