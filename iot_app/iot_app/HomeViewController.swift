@@ -13,6 +13,8 @@ class HomeViewController: UIViewController {
 
     enum CellId: String {
         case light
+        case rollerShutter
+        case heater
     }
 
     // MARK: View elements
@@ -26,6 +28,8 @@ class HomeViewController: UIViewController {
         let cv = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         cv.backgroundColor = .clear
         cv.register(LightCell.self, forCellWithReuseIdentifier: CellId.light.rawValue)
+        cv.register(RollerShutterCell.self, forCellWithReuseIdentifier: CellId.rollerShutter.rawValue)
+        cv.register(HeaterCell.self, forCellWithReuseIdentifier: CellId.heater.rawValue)
         cv.dataSource = self
         cv.delegate = self
         return cv
@@ -75,9 +79,21 @@ extension HomeViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId.light.rawValue, for: indexPath) as! LightCell
-        cell.titleLabel.text = "Texte a afficher" // DataManager.shared.devices[indexPath.item]
-        return cell
+        let currentDevice = DataManager.shared.devices[indexPath.item]
+        switch currentDevice.productType {
+        case "Light":
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId.light.rawValue, for: indexPath) as! LightCell
+            cell.device = currentDevice
+            return cell
+        case "RollerShutter":
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId.rollerShutter.rawValue, for: indexPath) as! RollerShutterCell
+            cell.device = currentDevice
+            return cell
+        default:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId.heater.rawValue, for: indexPath) as! HeaterCell
+            cell.device = currentDevice
+            return cell
+        }
     }
 
 }

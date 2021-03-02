@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0DB2273C25EEDFF60033EAF5 /* RollerShutterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2273B25EEDFF60033EAF5 /* RollerShutterCell.swift */; };
+		0DB2274125EEE3DE0033EAF5 /* HeaterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2274025EEE3DE0033EAF5 /* HeaterCell.swift */; };
+		0DB2274625EEE4100033EAF5 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2274525EEE4100033EAF5 /* TitleLabel.swift */; };
+		0DB2274B25EEE42B0033EAF5 /* Switcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2274A25EEE42B0033EAF5 /* Switcher.swift */; };
 		0DD0BD4925ED996D00C30B4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0BD4825ED996D00C30B4D /* AppDelegate.swift */; };
 		0DD0BD4B25ED996D00C30B4D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0BD4A25ED996D00C30B4D /* SceneDelegate.swift */; };
 		0DD0BD5325ED996D00C30B4D /* iot_app.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0BD5125ED996D00C30B4D /* iot_app.xcdatamodeld */; };
@@ -48,6 +52,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0DB2273B25EEDFF60033EAF5 /* RollerShutterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollerShutterCell.swift; sourceTree = "<group>"; };
+		0DB2274025EEE3DE0033EAF5 /* HeaterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaterCell.swift; sourceTree = "<group>"; };
+		0DB2274525EEE4100033EAF5 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
+		0DB2274A25EEE42B0033EAF5 /* Switcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switcher.swift; sourceTree = "<group>"; };
 		0DD0BD4525ED996D00C30B4D /* iot_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iot_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DD0BD4825ED996D00C30B4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0DD0BD4A25ED996D00C30B4D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +143,8 @@
 				0DD0BDBE25EE92C200C30B4D /* WelcomeTitle.swift */,
 				0DD0BE0025EEC1D100C30B4D /* FilterButton.swift */,
 				0DD0BDFB25EEBCBE00C30B4D /* LightCell.swift */,
+				0DB2273B25EEDFF60033EAF5 /* RollerShutterCell.swift */,
+				0DB2274025EEE3DE0033EAF5 /* HeaterCell.swift */,
 			);
 			path = iot_app;
 			sourceTree = "<group>";
@@ -195,6 +205,8 @@
 				0DD0BDC325EE92E400C30B4D /* RoundedButton.swift */,
 				0DD0BDF125EEB6E900C30B4D /* VStack.swift */,
 				0DD0BDF625EEB73000C30B4D /* HStack.swift */,
+				0DB2274525EEE4100033EAF5 /* TitleLabel.swift */,
+				0DB2274A25EEE42B0033EAF5 /* Switcher.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -339,10 +351,14 @@
 				0DD0BE0125EEC1D100C30B4D /* FilterButton.swift in Sources */,
 				0DD0BDF225EEB6E900C30B4D /* VStack.swift in Sources */,
 				0DD0BDC425EE92E400C30B4D /* RoundedButton.swift in Sources */,
+				0DB2274B25EEE42B0033EAF5 /* Switcher.swift in Sources */,
+				0DB2273C25EEDFF60033EAF5 /* RollerShutterCell.swift in Sources */,
 				0DD0BD4925ED996D00C30B4D /* AppDelegate.swift in Sources */,
+				0DB2274625EEE4100033EAF5 /* TitleLabel.swift in Sources */,
 				0DD0BDDA25EEA86A00C30B4D /* User.swift in Sources */,
 				0DD0BDDF25EEA87700C30B4D /* Address.swift in Sources */,
 				0DD0BDF725EEB73000C30B4D /* HStack.swift in Sources */,
+				0DB2274125EEE3DE0033EAF5 /* HeaterCell.swift in Sources */,
 				0DD0BDED25EEACC900C30B4D /* DataManager.swift in Sources */,
 				0DD0BD4B25ED996D00C30B4D /* SceneDelegate.swift in Sources */,
 			);

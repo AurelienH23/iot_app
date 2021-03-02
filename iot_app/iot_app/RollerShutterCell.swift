@@ -1,5 +1,5 @@
 //
-//  LightCell.swift
+//  RollerShutterCell.swift
 //  iot_app
 //
 //  Created by Aurélien Haie on 02/03/2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LightCell: UICollectionViewCell {
+class RollerShutterCell: UICollectionViewCell {
 
     // MARK: Properties
 
@@ -20,8 +20,7 @@ class LightCell: UICollectionViewCell {
     
     // MARK: View elements
     
-    private let titleLabel = TitleLabel("TEST de title")
-    private let switcher = Switcher()
+    private let titleLabel = TitleLabel()
 
     // MARK: Lifecycle
     
@@ -41,9 +40,8 @@ class LightCell: UICollectionViewCell {
         layer.cornerRadius = .largeCornerRadius
         layer.borderWidth = 1
         layer.borderColor = UIColor.borderColor?.cgColor
-        addSubviews(titleLabel, switcher)
-        titleLabel.anchor(top: switcher.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: .smallSpace, paddingLeft: .mediumSpace, paddingRight: .mediumSpace)
-        switcher.anchor(top: topAnchor, right: rightAnchor, paddingTop: .smallSpace, paddingRight: .smallSpace)
+        addSubviews(titleLabel)
+        titleLabel.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor, paddingTop: .mediumSpace, paddingLeft: .mediumSpace, paddingRight: .mediumSpace)
     }
 
 }

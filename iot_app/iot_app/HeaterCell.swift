@@ -1,5 +1,5 @@
 //
-//  LightCell.swift
+//  HeaterCell.swift
 //  iot_app
 //
 //  Created by Aurélien Haie on 02/03/2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LightCell: UICollectionViewCell {
+class HeaterCell: UICollectionViewCell {
 
     // MARK: Properties
 
@@ -20,7 +20,7 @@ class LightCell: UICollectionViewCell {
     
     // MARK: View elements
     
-    private let titleLabel = TitleLabel("TEST de title")
+    private let titleLabel = TitleLabel()
     private let switcher = Switcher()
 
     // MARK: Lifecycle
