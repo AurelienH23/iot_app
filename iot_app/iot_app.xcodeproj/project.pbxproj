@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D636B7425EEFD6A00E37999 /* ControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D636B7325EEFD6A00E37999 /* ControlViewController.swift */; };
 		0DB2273C25EEDFF60033EAF5 /* RollerShutterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2273B25EEDFF60033EAF5 /* RollerShutterCell.swift */; };
 		0DB2274125EEE3DE0033EAF5 /* HeaterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2274025EEE3DE0033EAF5 /* HeaterCell.swift */; };
 		0DB2274625EEE4100033EAF5 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2274525EEE4100033EAF5 /* TitleLabel.swift */; };
@@ -53,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D636B7325EEFD6A00E37999 /* ControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlViewController.swift; sourceTree = "<group>"; };
 		0DB2273B25EEDFF60033EAF5 /* RollerShutterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollerShutterCell.swift; sourceTree = "<group>"; };
 		0DB2274025EEE3DE0033EAF5 /* HeaterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaterCell.swift; sourceTree = "<group>"; };
 		0DB2274525EEE4100033EAF5 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
@@ -120,11 +122,20 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		0D636B7825EEFDEB00E37999 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				0D636B7325EEFD6A00E37999 /* ControlViewController.swift */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
 		0DB2274F25EEE5F40033EAF5 /* Features */ = {
 			isa = PBXGroup;
 			children = (
 				0DB2275325EEE5FE0033EAF5 /* Home */,
 				0D636B6C25EEE95700E37999 /* Profile */,
+				0D636B7825EEFDEB00E37999 /* Controls */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -413,6 +424,7 @@
 				0DB2274125EEE3DE0033EAF5 /* HeaterCell.swift in Sources */,
 				0DD0BDED25EEACC900C30B4D /* DataManager.swift in Sources */,
 				0DD0BD4B25ED996D00C30B4D /* SceneDelegate.swift in Sources */,
+				0D636B7425EEFD6A00E37999 /* ControlViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

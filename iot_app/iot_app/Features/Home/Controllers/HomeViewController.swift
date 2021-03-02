@@ -176,4 +176,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDelegate
         return UIEdgeInsets(top: .mediumSpace, left: .extraLargeSpace, bottom: .extraLargeSpace, right: .extraLargeSpace)
     }
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let control = ControlViewController()
+        present(control, animated: true, completion: nil)
+    }
+
 }
