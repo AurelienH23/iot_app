@@ -19,7 +19,7 @@ class HomeViewController: UIViewController {
 
     // MARK: View elements
 
-    private let profileButton = RoundedButton(image: "ic_account")
+    private let profileButton = RoundedButton(image: "ic_account", target: self, action: #selector(showProfile))
     private let titleLabel = WelcomeTitle()
     private let lightsFilter = FilterButton(title: "Lights")
     private let rollerShuttersFilter = FilterButton(title: "Roller shutters")
@@ -40,12 +40,13 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupObservers()
+        setupNavBar()
         setupViews()
-        
     }
 
     private func setupObservers() {
         DataManager.shared.userObservers.append { updatedUser in
+            print(updatedUser)
             DispatchQueue.main.async {
                 self.titleLabel.welcomeTheUser(named: updatedUser?.nameToDisplay())
             }
@@ -58,15 +59,24 @@ class HomeViewController: UIViewController {
         }
     }
 
+    private func setupNavBar() {
+        navigationController?.isNavigationBarHidden = true
+    }
+
     private func setupViews() {
         view.backgroundColor = .backgroundColor
         let filters = HStack.items([lightsFilter, rollerShuttersFilter, heatersFilter], spaced: .smallSpace)
         lightsFilter.isFilterSelected = true
         view.addSubviews(profileButton, titleLabel, filters, collectionView)
         profileButton.anchor(top: view.topAnchor, right: view.rightAnchor, paddingTop: .topPadding + .mediumSpace, paddingRight: .extraLargeSpace)
-        titleLabel.anchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 100, paddingLeft: .extraLargeSpace, paddingRight: .extraLargeSpace)
+        titleLabel.anchor(top: profileButton.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: .smallSpace, paddingLeft: .extraLargeSpace, paddingRight: .extraLargeSpace)
         filters.anchor(top: titleLabel.bottomAnchor, left: titleLabel.leftAnchor, paddingTop: .extraLargeSpace)
         collectionView.anchor(top: filters.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
+    }
+
+    @objc private func showProfile() {
+        let profileController = ProfileViewController()
+        navigationController?.pushViewController(profileController, animated: true)
     }
 
 }

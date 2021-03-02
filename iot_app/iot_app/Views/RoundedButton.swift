@@ -11,9 +11,10 @@ class RoundedButton: UIButton {
     
     // MARK: Lifecycle
     
-    init(image: String) {
+    init(image: String, target: Any?, action: Selector) {
         super.init(frame: .zero)
         setImage(UIImage(named: image)?.withRenderingMode(.alwaysTemplate), for: .normal)
+        addTarget(target, action: action, for: .touchUpInside)
         setupViews()
     }
     

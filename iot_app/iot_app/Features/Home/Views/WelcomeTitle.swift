@@ -27,6 +27,7 @@ class WelcomeTitle: UILabel {
     }
 
     internal func welcomeTheUser(named: String?) {
+        print("ON AFFICHE LE NOM", named)
         guard let username = named else { return }
         let generatedText = NSMutableAttributedString(attributedString: NSAttributedString(string: "Welcome home,\n", attributes: [.font: UIFont.boldSystemFont(ofSize: 30)]))
         generatedText.append(NSAttributedString(string: username, attributes: [.font: UIFont.systemFont(ofSize: 30)]))
