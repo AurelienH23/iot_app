@@ -110,6 +110,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0DB2274F25EEE5F40033EAF5 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				0DB2275325EEE5FE0033EAF5 /* Home */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		0DB2275325EEE5FE0033EAF5 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				0DB2275425EEE6050033EAF5 /* Controllers */,
+				0DB2275525EEE60D0033EAF5 /* Views */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		0DB2275425EEE6050033EAF5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0DD0BDA825ED9EDC00C30B4D /* HomeViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		0DB2275525EEE60D0033EAF5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0DD0BDBE25EE92C200C30B4D /* WelcomeTitle.swift */,
+				0DD0BE0025EEC1D100C30B4D /* FilterButton.swift */,
+				0DB2275625EEE6130033EAF5 /* Cells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0DB2275625EEE6130033EAF5 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				0DD0BDFB25EEBCBE00C30B4D /* LightCell.swift */,
+				0DB2273B25EEDFF60033EAF5 /* RollerShutterCell.swift */,
+				0DB2274025EEE3DE0033EAF5 /* HeaterCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		0DD0BD3C25ED996D00C30B4D = {
 			isa = PBXGroup;
 			children = (
@@ -139,12 +184,7 @@
 				0DD0BDE325EEA8AC00C30B4D /* Utils */,
 				0DD0BDC825EEA82B00C30B4D /* Models */,
 				0DD0BE0525EEC48D00C30B4D /* Views */,
-				0DD0BDA825ED9EDC00C30B4D /* HomeViewController.swift */,
-				0DD0BDBE25EE92C200C30B4D /* WelcomeTitle.swift */,
-				0DD0BE0025EEC1D100C30B4D /* FilterButton.swift */,
-				0DD0BDFB25EEBCBE00C30B4D /* LightCell.swift */,
-				0DB2273B25EEDFF60033EAF5 /* RollerShutterCell.swift */,
-				0DB2274025EEE3DE0033EAF5 /* HeaterCell.swift */,
+				0DB2274F25EEE5F40033EAF5 /* Features */,
 			);
 			path = iot_app;
 			sourceTree = "<group>";
