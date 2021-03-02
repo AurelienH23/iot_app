@@ -11,6 +11,8 @@ class FilterButton: UIButton {
     
     // MARK: Properties
     
+    private(set) var filter: Filter
+    
     internal var isFilterSelected = false {
         didSet {
             updateViews(selected: isFilterSelected)
@@ -19,12 +21,13 @@ class FilterButton: UIButton {
     
     // MARK: Lifecycle
     
-    init(title: String) {
+    init(_ filter: Filter, target: Any?, action: Selector) {
+        self.filter = filter
         super.init(frame: .zero)
-        setTitle(title, for: .normal)
         setupViews()
         updateViews(selected: false)
         addTarget(self, action: #selector(didSelectFilter), for: .touchUpInside)
+        addTarget(target, action: action, for: .touchUpInside)
     }
 
     required init?(coder: NSCoder) {
@@ -42,6 +45,7 @@ class FilterButton: UIButton {
     private func setupViews() {
         anchor(height: 30)
         layer.cornerRadius = 15
+        setTitle(filter.displayedName(), for: .normal)
         titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
     }
 
