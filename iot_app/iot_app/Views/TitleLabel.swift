@@ -15,9 +15,10 @@ class TitleLabel: UILabel {
     
     // MARK: Lifecycle
     
-    init(_ text: String? = nil) {
+    init(_ text: String? = nil, aligned: NSTextAlignment = .left) {
         super.init(frame: .zero)
         self.text = text
+        self.textAlignment = aligned
         setupViews()
     }
 

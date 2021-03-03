@@ -8,9 +8,9 @@
 import Foundation
 
 struct Address: Decodable {
-    private let city: String
-    private let postalCode: Int
-    private let street: String
-    private let streetCode: String
-    private let country: String
+    private(set) var city: String
+    private(set) var postalCode: Int
+    private(set) var street: String
+    private(set) var streetCode: String
+    private(set) var country: String
 }
