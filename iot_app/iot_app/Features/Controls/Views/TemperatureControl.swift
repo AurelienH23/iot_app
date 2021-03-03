@@ -11,7 +11,7 @@ class TemperatureControl: UIView {
 
     // MARK: Properties
 
-    private var value: CGFloat = 7.0
+    internal var temperature: Listener<CGFloat> = Listener(7.0)
     private var tmpStartValue: CGFloat = 7.0
 
     // MARK: View elements
@@ -21,7 +21,7 @@ class TemperatureControl: UIView {
     init() {
         super.init(frame: .zero)
         setupViews()
-        updateSteps(for: value)
+        updateSteps(for: temperature.value)
     }
 
     required init?(coder: NSCoder) {
@@ -52,15 +52,43 @@ class TemperatureControl: UIView {
     }
 
     internal func didSlideControl(with value: CGFloat) {
-        
+        let changePercent = value / frame.height
+        let changeDegrees = 21 * changePercent
+        let newValue = tmpStartValue + changeDegrees
+        let checkedValue = max(7, min(newValue, 28))
+        updateSteps(for: checkedValue)
+        temperature.value = checkedValue
     }
 
     internal func updateStartValue() {
-        tmpStartValue = 0
+        tmpStartValue = temperature.value
     }
 
-    private func updateSteps(for value: CGFloat) {
-        subviews.forEach({$0.alpha = 0})
+    private func updateSteps(for value: CGFloat) { // TODO: Gérer le .5 en multipliant tout par deux
+        let startingStepIndex = getStartingStepIndex(for: value)
+        let isDecimal = isHalfStep(for: value)
+        guard let steps = subviews.first as? UIStackView else { return }
+        for (i, step) in steps.arrangedSubviews.enumerated() {
+            step.alpha = i > startingStepIndex ? 1 : 0
+            if i == startingStepIndex {
+                step.alpha = isDecimal ? 0.5 : 0
+            }
+        }
     }
 
+    private func getStartingStepIndex(for value: CGFloat) -> Int {
+        let delta = value - 7
+        return 20 - Int(delta)
+    }
+
+    private func isHalfStep(for value: CGFloat) -> Bool {
+        for i in stride(from: 7, to: 28.5, by: 0.5) {
+            if value < CGFloat(i) {
+                let lastValue = i - 0.5
+                let remainder = lastValue.truncatingRemainder(dividingBy: Double(Int(lastValue)))
+                return remainder > 0.5
+            }
+        }
+        return false
+    }
 }

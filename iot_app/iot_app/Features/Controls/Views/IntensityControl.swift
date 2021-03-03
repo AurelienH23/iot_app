@@ -11,6 +11,7 @@ class IntensityControl: UIView {
 
     // MARK: Properties
 
+    internal var intensity: Listener<CGFloat> = Listener(50)
     private var heightConstraint: NSLayoutConstraint?
     private var tmpStartValue: CGFloat = 100
 
@@ -62,8 +63,9 @@ class IntensityControl: UIView {
 
     internal func didSlideControl(with value: CGFloat) {
         let newValue = tmpStartValue + value
-        guard newValue < frame.height, newValue > 0 else { return }
-        heightConstraint?.constant = newValue
+        let checkedValue = max(0, min(newValue, frame.height))
+        heightConstraint?.constant = checkedValue
+        intensity.value = checkedValue / frame.height * 100
     }
 
     internal func updateStartValue() {

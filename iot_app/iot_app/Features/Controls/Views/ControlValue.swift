@@ -40,4 +40,8 @@ class ControlValue: UILabel {
         font = .boldSystemFont(ofSize: 30)
     }
 
+    internal func updateValue(with newValue: CGFloat) {
+        value = Int(newValue)
+    }
+
 }

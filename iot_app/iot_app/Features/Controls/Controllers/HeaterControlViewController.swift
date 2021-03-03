@@ -19,6 +19,10 @@ class HeaterControlViewController: ControlViewController {
         
         let pan = UIPanGestureRecognizer(target: self, action: #selector(didChangeValue(gesture:)))
         temperatureControl.addGestureRecognizer(pan)
+        
+        temperatureControl.temperature.bind { (value) in
+            self.intensityValue.updateValue(with: value)
+        }
     }
 
     @objc private func didChangeValue(gesture: UIPanGestureRecognizer) {

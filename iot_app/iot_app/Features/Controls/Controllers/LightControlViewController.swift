@@ -19,6 +19,10 @@ class LightControlViewController: ControlViewController {
         
         let pan = UIPanGestureRecognizer(target: self, action: #selector(didChangeValue(gesture:)))
         intensityControl.addGestureRecognizer(pan)
+        
+        intensityControl.intensity.bind { (value) in
+            self.intensityValue.updateValue(with: value)
+        }
     }
 
     @objc private func didChangeValue(gesture: UIPanGestureRecognizer) {
