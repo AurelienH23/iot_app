@@ -87,7 +87,7 @@ class HomeViewController: UIViewController {
 
     private func setupBinders() {
         viewModel.filters.bind { _ in
-            self.collectionView.reloadData()
+            self.collectionView.reloadSections([0])
         }
     }
 
