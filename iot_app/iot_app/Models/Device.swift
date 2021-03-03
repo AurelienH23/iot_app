@@ -15,4 +15,18 @@ struct Device: Decodable {
     private let mode: String?
     private let position: Int?
     private let temperature: Int?
+
+    internal func associatedControl() -> ControlViewController? {
+        switch productType {
+        case "Light":
+            return LightControlViewController(with: self)
+        case "RollerShutter":
+            return RollerShutterControlViewController(with: self)
+        case "Heater":
+            return HeaterControlViewController(with: self)
+        default:
+            return nil
+        }
+    }
+
 }

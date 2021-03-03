@@ -149,7 +149,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDelegate
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let control = ControlViewController()
+        let selectedDevice = viewModel.selectedDevice(at: indexPath.item)
+        guard let control = selectedDevice.associatedControl() else { return }
         present(control, animated: true, completion: nil)
     }
 
