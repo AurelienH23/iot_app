@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0D636B7425EEFD6A00E37999 /* ControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D636B7325EEFD6A00E37999 /* ControlViewController.swift */; };
+		0D636B7D25EEFE4A00E37999 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D636B7C25EEFE4A00E37999 /* HomeViewModel.swift */; };
+		0D636B8925EEFF2C00E37999 /* Listener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D636B8825EEFF2C00E37999 /* Listener.swift */; };
+		0D636B8E25EF047400E37999 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D636B8D25EF047400E37999 /* Filter.swift */; };
 		0DB2273C25EEDFF60033EAF5 /* RollerShutterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2273B25EEDFF60033EAF5 /* RollerShutterCell.swift */; };
 		0DB2274125EEE3DE0033EAF5 /* HeaterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2274025EEE3DE0033EAF5 /* HeaterCell.swift */; };
 		0DB2274625EEE4100033EAF5 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2274525EEE4100033EAF5 /* TitleLabel.swift */; };
@@ -55,6 +58,9 @@
 
 /* Begin PBXFileReference section */
 		0D636B7325EEFD6A00E37999 /* ControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlViewController.swift; sourceTree = "<group>"; };
+		0D636B7C25EEFE4A00E37999 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		0D636B8825EEFF2C00E37999 /* Listener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listener.swift; sourceTree = "<group>"; };
+		0D636B8D25EF047400E37999 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		0DB2273B25EEDFF60033EAF5 /* RollerShutterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollerShutterCell.swift; sourceTree = "<group>"; };
 		0DB2274025EEE3DE0033EAF5 /* HeaterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaterCell.swift; sourceTree = "<group>"; };
 		0DB2274525EEE4100033EAF5 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
@@ -130,6 +136,22 @@
 			path = Controls;
 			sourceTree = "<group>";
 		};
+		0D636B8125EEFE6200E37999 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				0D636B7C25EEFE4A00E37999 /* HomeViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		0D636B9225EF04A900E37999 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0D636B8D25EF047400E37999 /* Filter.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		0DB2274F25EEE5F40033EAF5 /* Features */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,7 +166,9 @@
 			isa = PBXGroup;
 			children = (
 				0DB2275425EEE6050033EAF5 /* Controllers */,
+				0D636B9225EF04A900E37999 /* Models */,
 				0DB2275525EEE60D0033EAF5 /* Views */,
+				0D636B8125EEFE6200E37999 /* ViewModels */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -257,6 +281,7 @@
 				0DD0BDB925EE8CC100C30B4D /* Extensions.swift */,
 				0DD0BDE425EEA8C400C30B4D /* Network.swift */,
 				0DD0BDEC25EEACC900C30B4D /* DataManager.swift */,
+				0D636B8825EEFF2C00E37999 /* Listener.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -416,13 +441,16 @@
 				0DD0BDC425EE92E400C30B4D /* RoundedButton.swift in Sources */,
 				0DB2274B25EEE42B0033EAF5 /* Switcher.swift in Sources */,
 				0DB2273C25EEDFF60033EAF5 /* RollerShutterCell.swift in Sources */,
+				0D636B8925EEFF2C00E37999 /* Listener.swift in Sources */,
 				0DD0BD4925ED996D00C30B4D /* AppDelegate.swift in Sources */,
 				0DB2274625EEE4100033EAF5 /* TitleLabel.swift in Sources */,
 				0DD0BDDA25EEA86A00C30B4D /* User.swift in Sources */,
 				0DD0BDDF25EEA87700C30B4D /* Address.swift in Sources */,
 				0DD0BDF725EEB73000C30B4D /* HStack.swift in Sources */,
+				0D636B7D25EEFE4A00E37999 /* HomeViewModel.swift in Sources */,
 				0DB2274125EEE3DE0033EAF5 /* HeaterCell.swift in Sources */,
 				0DD0BDED25EEACC900C30B4D /* DataManager.swift in Sources */,
+				0D636B8E25EF047400E37999 /* Filter.swift in Sources */,
 				0DD0BD4B25ED996D00C30B4D /* SceneDelegate.swift in Sources */,
 				0D636B7425EEFD6A00E37999 /* ControlViewController.swift in Sources */,
 			);

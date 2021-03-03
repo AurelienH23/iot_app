@@ -7,43 +7,27 @@
 
 import UIKit
 
-enum Filter {
-    case light
-    case rollerShutter
-    case heater
-    
-    internal func displayedName() -> String {
-        switch self {
-        case .light:
-            return "Lights"
-        case .rollerShutter:
-            return "Roller shutters"
-        case .heater:
-            return "Heaters"
-        }
-    }
-
-    static func getFilter(associatedTo productType: String) -> Filter {
-        let associations: [String: Filter] = ["Light": .light,
-                                              "RollerShutter": .rollerShutter,
-                                              "Heater": .heater]
-        return associations[productType]!
-    }
-}
-
+// TODO: Ajouter un helper pour le collection view afin de mieux le tester
 class HomeViewController: UIViewController {
 
     // MARK: Properties
 
-    enum CellId: String {
+    let viewModel = HomeViewModel()
+
+    enum CellId: String, CaseIterable {
         case light
         case rollerShutter
         case heater
-    }
-
-    private var filters = Set<Filter>() {
-        didSet {
-            collectionView.reloadData()
+        
+        internal func associatedCell() -> UICollectionViewCell.Type {
+            switch self {
+            case .light:
+                return LightCell.self
+            case .rollerShutter:
+                return RollerShutterCell.self
+            case .heater:
+                return HeaterCell.self
+            }
         }
     }
 
@@ -57,11 +41,9 @@ class HomeViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let cv = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         cv.backgroundColor = .clear
-        cv.register(LightCell.self, forCellWithReuseIdentifier: CellId.light.rawValue)
-        cv.register(RollerShutterCell.self, forCellWithReuseIdentifier: CellId.rollerShutter.rawValue)
-        cv.register(HeaterCell.self, forCellWithReuseIdentifier: CellId.heater.rawValue)
         cv.dataSource = self
         cv.delegate = self
+        CellId.allCases.forEach({cv.register($0.associatedCell(), forCellWithReuseIdentifier: $0.rawValue)})
         return cv
     }()
 
@@ -72,6 +54,7 @@ class HomeViewController: UIViewController {
         setupObservers()
         setupNavBar()
         setupViews()
+        setupBinders()
     }
 
     private func setupObservers() { // FIXME: Observers ne fonctionnent pas tout le temps
@@ -102,17 +85,19 @@ class HomeViewController: UIViewController {
         collectionView.anchor(top: filters.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
     }
 
+    private func setupBinders() {
+        viewModel.filters.bind { _ in
+            self.collectionView.reloadData()
+        }
+    }
+
     @objc private func showProfile() {
         let profileController = ProfileViewController()
         navigationController?.pushViewController(profileController, animated: true)
     }
 
     @objc private func didSelectFilter(button: FilterButton) {
-        if button.isFilterSelected {
-            filters.insert(button.filter)
-        } else {
-            filters.remove(button.filter)
-        }
+        viewModel.updateFilters(with: button.filter, if: button.isFilterSelected)
     }
 
 }
@@ -121,24 +106,11 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if filters.isEmpty {
-            return DataManager.shared.devices.count
-        } else {
-            let filteredDevices = DataManager.shared.devices.filter { (device) -> Bool in
-                return self.filters.contains(Filter.getFilter(associatedTo: device.productType))
-            }
-            return filteredDevices.count
-        }
+        return viewModel.numberOfItems()
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var devices = DataManager.shared.devices
-        if !filters.isEmpty {
-            devices = DataManager.shared.devices.filter { (device) -> Bool in
-                return self.filters.contains(Filter.getFilter(associatedTo: device.productType))
-            }
-        }
-        let currentDevice = devices[indexPath.item]
+        let currentDevice = viewModel.selectedDevice(at: indexPath.item)
         switch currentDevice.productType {
         case "Light":
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId.light.rawValue, for: indexPath) as! LightCell
