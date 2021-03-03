@@ -13,7 +13,17 @@ class RoundedButton: UIButton {
     
     init(image: String, target: Any?, action: Selector) {
         super.init(frame: .zero)
-        setImage(UIImage(named: image)?.withRenderingMode(.alwaysTemplate), for: .normal)
+        var img: UIImage? = nil
+        if #available(iOS 13.0, *) {
+            if let systemImage = UIImage(systemName: image) {
+                img = systemImage
+            } else {
+                img = UIImage(named: image)
+            }
+        } else {
+            img = UIImage(named: image)
+        }
+        setImage(img?.withRenderingMode(.alwaysTemplate), for: .normal)
         addTarget(target, action: action, for: .touchUpInside)
         setupViews()
     }

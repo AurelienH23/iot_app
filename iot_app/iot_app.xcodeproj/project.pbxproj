@@ -11,6 +11,10 @@
 		0D636B7D25EEFE4A00E37999 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D636B7C25EEFE4A00E37999 /* HomeViewModel.swift */; };
 		0D636B8925EEFF2C00E37999 /* Listener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D636B8825EEFF2C00E37999 /* Listener.swift */; };
 		0D636B8E25EF047400E37999 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D636B8D25EF047400E37999 /* Filter.swift */; };
+		0D636B9A25EFA2B000E37999 /* DetailLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D636B9925EFA2B000E37999 /* DetailLabel.swift */; };
+		0D636B9F25EFA2E000E37999 /* Caption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D636B9E25EFA2E000E37999 /* Caption.swift */; };
+		0D636BA425EFA2FA00E37999 /* AddressCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D636BA325EFA2FA00E37999 /* AddressCard.swift */; };
+		0D636BA925EFA31900E37999 /* BirthdateCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D636BA825EFA31900E37999 /* BirthdateCard.swift */; };
 		0DB2273C25EEDFF60033EAF5 /* RollerShutterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2273B25EEDFF60033EAF5 /* RollerShutterCell.swift */; };
 		0DB2274125EEE3DE0033EAF5 /* HeaterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2274025EEE3DE0033EAF5 /* HeaterCell.swift */; };
 		0DB2274625EEE4100033EAF5 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2274525EEE4100033EAF5 /* TitleLabel.swift */; };
@@ -61,6 +65,10 @@
 		0D636B7C25EEFE4A00E37999 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		0D636B8825EEFF2C00E37999 /* Listener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listener.swift; sourceTree = "<group>"; };
 		0D636B8D25EF047400E37999 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		0D636B9925EFA2B000E37999 /* DetailLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLabel.swift; sourceTree = "<group>"; };
+		0D636B9E25EFA2E000E37999 /* Caption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Caption.swift; sourceTree = "<group>"; };
+		0D636BA325EFA2FA00E37999 /* AddressCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCard.swift; sourceTree = "<group>"; };
+		0D636BA825EFA31900E37999 /* BirthdateCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdateCard.swift; sourceTree = "<group>"; };
 		0DB2273B25EEDFF60033EAF5 /* RollerShutterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollerShutterCell.swift; sourceTree = "<group>"; };
 		0DB2274025EEE3DE0033EAF5 /* HeaterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaterCell.swift; sourceTree = "<group>"; };
 		0DB2274525EEE4100033EAF5 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
@@ -123,7 +131,8 @@
 		0D636B6C25EEE95700E37999 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				0DB2275D25EEE69C0033EAF5 /* ProfileViewController.swift */,
+				0D636BAD25EFA35300E37999 /* Controllers */,
+				0D636BB125EFA35A00E37999 /* Views */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -150,6 +159,23 @@
 				0D636B8D25EF047400E37999 /* Filter.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		0D636BAD25EFA35300E37999 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0DB2275D25EEE69C0033EAF5 /* ProfileViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		0D636BB125EFA35A00E37999 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0D636BA325EFA2FA00E37999 /* AddressCard.swift */,
+				0D636BA825EFA31900E37999 /* BirthdateCard.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		0DB2274F25EEE5F40033EAF5 /* Features */ = {
@@ -293,6 +319,8 @@
 				0DD0BDF125EEB6E900C30B4D /* VStack.swift */,
 				0DD0BDF625EEB73000C30B4D /* HStack.swift */,
 				0DB2274525EEE4100033EAF5 /* TitleLabel.swift */,
+				0D636B9E25EFA2E000E37999 /* Caption.swift */,
+				0D636B9925EFA2B000E37999 /* DetailLabel.swift */,
 				0DB2274A25EEE42B0033EAF5 /* Switcher.swift */,
 			);
 			path = Views;
@@ -438,13 +466,16 @@
 				0DD0BDCA25EEA83600C30B4D /* FetchData.swift in Sources */,
 				0DD0BE0125EEC1D100C30B4D /* FilterButton.swift in Sources */,
 				0DD0BDF225EEB6E900C30B4D /* VStack.swift in Sources */,
+				0D636BA925EFA31900E37999 /* BirthdateCard.swift in Sources */,
 				0DD0BDC425EE92E400C30B4D /* RoundedButton.swift in Sources */,
 				0DB2274B25EEE42B0033EAF5 /* Switcher.swift in Sources */,
 				0DB2273C25EEDFF60033EAF5 /* RollerShutterCell.swift in Sources */,
+				0D636BA425EFA2FA00E37999 /* AddressCard.swift in Sources */,
 				0D636B8925EEFF2C00E37999 /* Listener.swift in Sources */,
 				0DD0BD4925ED996D00C30B4D /* AppDelegate.swift in Sources */,
 				0DB2274625EEE4100033EAF5 /* TitleLabel.swift in Sources */,
 				0DD0BDDA25EEA86A00C30B4D /* User.swift in Sources */,
+				0D636B9F25EFA2E000E37999 /* Caption.swift in Sources */,
 				0DD0BDDF25EEA87700C30B4D /* Address.swift in Sources */,
 				0DD0BDF725EEB73000C30B4D /* HStack.swift in Sources */,
 				0D636B7D25EEFE4A00E37999 /* HomeViewModel.swift in Sources */,
@@ -452,6 +483,7 @@
 				0DD0BDED25EEACC900C30B4D /* DataManager.swift in Sources */,
 				0D636B8E25EF047400E37999 /* Filter.swift in Sources */,
 				0DD0BD4B25ED996D00C30B4D /* SceneDelegate.swift in Sources */,
+				0D636B9A25EFA2B000E37999 /* DetailLabel.swift in Sources */,
 				0D636B7425EEFD6A00E37999 /* ControlViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

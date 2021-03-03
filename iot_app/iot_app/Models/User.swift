@@ -22,7 +22,7 @@ struct User: Decodable {
     }
 
     internal func birthdateToString() -> String {
-        let dateOfbirth = Date(timeIntervalSince1970: TimeInterval(birthDate))
+        let dateOfbirth = Date(timeIntervalSinceReferenceDate: TimeInterval(birthDate))
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/YYYY"
         return formatter.string(from: dateOfbirth)
