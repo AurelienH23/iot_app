@@ -9,26 +9,26 @@ import UIKit
 
 class HeaterControlViewController: ControlViewController {
     
-    private let intensityControl = IntensityControl(for: .light)
+    private let temperatureControl = TemperatureControl()
 
     override func setupViews() {
         super.setupViews()
-        view.addSubview(intensityControl)
-        intensityControl.anchor(top: intensityValue.bottomAnchor, bottom: view.bottomAnchor, paddingTop: .mediumSpace, paddingBottom: .bottomPadding + 100 + .mediumSpace)
-        intensityControl.centerHorizontally(to: view)
+        view.addSubview(temperatureControl)
+        temperatureControl.anchor(top: intensityValue.bottomAnchor, bottom: view.bottomAnchor, paddingTop: .mediumSpace, paddingBottom: .bottomPadding + 100 + .mediumSpace)
+        temperatureControl.centerHorizontally(to: view)
         
         let pan = UIPanGestureRecognizer(target: self, action: #selector(didChangeValue(gesture:)))
-        intensityControl.addGestureRecognizer(pan)
+        temperatureControl.addGestureRecognizer(pan)
     }
 
     @objc private func didChangeValue(gesture: UIPanGestureRecognizer) {
         switch gesture.state {
         case .began:
-            intensityControl.updateStartValue()
+            temperatureControl.updateStartValue()
         case .changed:
-            let translated = gesture.translation(in: intensityControl)
+            let translated = gesture.translation(in: temperatureControl)
             let verticalTranslation = -translated.y
-            intensityControl.didSlideControl(with: verticalTranslation)
+            temperatureControl.didSlideControl(with: verticalTranslation)
         default:
             break
         }

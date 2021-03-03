@@ -19,6 +19,11 @@
 		0D85605025EFA555001F9A26 /* RollerShutterControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D85604F25EFA555001F9A26 /* RollerShutterControlViewController.swift */; };
 		0D85605525EFA57A001F9A26 /* HeaterControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D85605425EFA57A001F9A26 /* HeaterControlViewController.swift */; };
 		0D85605A25EFD48E001F9A26 /* ControlValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D85605925EFD48E001F9A26 /* ControlValue.swift */; };
+		0D85606325F03742001F9A26 /* SwitchableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D85606225F03742001F9A26 /* SwitchableView.swift */; };
+		0D85606825F0375F001F9A26 /* FilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D85606725F0375F001F9A26 /* FilledButton.swift */; };
+		0D85606D25F03836001F9A26 /* IntensityControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D85606C25F03836001F9A26 /* IntensityControl.swift */; };
+		0D85607225F0385D001F9A26 /* TemperatureControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D85607125F0385D001F9A26 /* TemperatureControl.swift */; };
+		0D85607725F03877001F9A26 /* StepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D85607625F03877001F9A26 /* StepView.swift */; };
 		0DB2273C25EEDFF60033EAF5 /* RollerShutterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2273B25EEDFF60033EAF5 /* RollerShutterCell.swift */; };
 		0DB2274125EEE3DE0033EAF5 /* HeaterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2274025EEE3DE0033EAF5 /* HeaterCell.swift */; };
 		0DB2274625EEE4100033EAF5 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2274525EEE4100033EAF5 /* TitleLabel.swift */; };
@@ -77,6 +82,11 @@
 		0D85604F25EFA555001F9A26 /* RollerShutterControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollerShutterControlViewController.swift; sourceTree = "<group>"; };
 		0D85605425EFA57A001F9A26 /* HeaterControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaterControlViewController.swift; sourceTree = "<group>"; };
 		0D85605925EFD48E001F9A26 /* ControlValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlValue.swift; sourceTree = "<group>"; };
+		0D85606225F03742001F9A26 /* SwitchableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchableView.swift; sourceTree = "<group>"; };
+		0D85606725F0375F001F9A26 /* FilledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilledButton.swift; sourceTree = "<group>"; };
+		0D85606C25F03836001F9A26 /* IntensityControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntensityControl.swift; sourceTree = "<group>"; };
+		0D85607125F0385D001F9A26 /* TemperatureControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureControl.swift; sourceTree = "<group>"; };
+		0D85607625F03877001F9A26 /* StepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepView.swift; sourceTree = "<group>"; };
 		0DB2273B25EEDFF60033EAF5 /* RollerShutterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollerShutterCell.swift; sourceTree = "<group>"; };
 		0DB2274025EEE3DE0033EAF5 /* HeaterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaterCell.swift; sourceTree = "<group>"; };
 		0DB2274525EEE4100033EAF5 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
@@ -148,11 +158,8 @@
 		0D636B7825EEFDEB00E37999 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
-				0D636B7325EEFD6A00E37999 /* ControlViewController.swift */,
-				0D85604A25EFA51F001F9A26 /* LightControlViewController.swift */,
-				0D85604F25EFA555001F9A26 /* RollerShutterControlViewController.swift */,
-				0D85605425EFA57A001F9A26 /* HeaterControlViewController.swift */,
-				0D85605925EFD48E001F9A26 /* ControlValue.swift */,
+				0D85605E25F03730001F9A26 /* Controllers */,
+				0D85607B25F03892001F9A26 /* Views */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -186,6 +193,30 @@
 			children = (
 				0D636BA325EFA2FA00E37999 /* AddressCard.swift */,
 				0D636BA825EFA31900E37999 /* BirthdateCard.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0D85605E25F03730001F9A26 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0D636B7325EEFD6A00E37999 /* ControlViewController.swift */,
+				0D85604A25EFA51F001F9A26 /* LightControlViewController.swift */,
+				0D85604F25EFA555001F9A26 /* RollerShutterControlViewController.swift */,
+				0D85605425EFA57A001F9A26 /* HeaterControlViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		0D85607B25F03892001F9A26 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0D85605925EFD48E001F9A26 /* ControlValue.swift */,
+				0D85606225F03742001F9A26 /* SwitchableView.swift */,
+				0D85606725F0375F001F9A26 /* FilledButton.swift */,
+				0D85606C25F03836001F9A26 /* IntensityControl.swift */,
+				0D85607125F0385D001F9A26 /* TemperatureControl.swift */,
+				0D85607625F03877001F9A26 /* StepView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -472,8 +503,10 @@
 				0D85605025EFA555001F9A26 /* RollerShutterControlViewController.swift in Sources */,
 				0DD0BDFC25EEBCBE00C30B4D /* LightCell.swift in Sources */,
 				0DD0BDE525EEA8C400C30B4D /* Network.swift in Sources */,
+				0D85606D25F03836001F9A26 /* IntensityControl.swift in Sources */,
 				0D85605A25EFD48E001F9A26 /* ControlValue.swift in Sources */,
 				0DD0BD5325ED996D00C30B4D /* iot_app.xcdatamodeld in Sources */,
+				0D85607225F0385D001F9A26 /* TemperatureControl.swift in Sources */,
 				0DD0BDD525EEA85400C30B4D /* Device.swift in Sources */,
 				0DB2275E25EEE69C0033EAF5 /* ProfileViewController.swift in Sources */,
 				0DD0BDBF25EE92C200C30B4D /* WelcomeTitle.swift in Sources */,
@@ -485,6 +518,7 @@
 				0DB2274B25EEE42B0033EAF5 /* Switcher.swift in Sources */,
 				0DB2273C25EEDFF60033EAF5 /* RollerShutterCell.swift in Sources */,
 				0D636BA425EFA2FA00E37999 /* AddressCard.swift in Sources */,
+				0D85607725F03877001F9A26 /* StepView.swift in Sources */,
 				0D636B8925EEFF2C00E37999 /* Listener.swift in Sources */,
 				0DD0BD4925ED996D00C30B4D /* AppDelegate.swift in Sources */,
 				0DB2274625EEE4100033EAF5 /* TitleLabel.swift in Sources */,
@@ -493,8 +527,10 @@
 				0DD0BDDF25EEA87700C30B4D /* Address.swift in Sources */,
 				0DD0BDF725EEB73000C30B4D /* HStack.swift in Sources */,
 				0D636B7D25EEFE4A00E37999 /* HomeViewModel.swift in Sources */,
+				0D85606325F03742001F9A26 /* SwitchableView.swift in Sources */,
 				0DB2274125EEE3DE0033EAF5 /* HeaterCell.swift in Sources */,
 				0D85604B25EFA51F001F9A26 /* LightControlViewController.swift in Sources */,
+				0D85606825F0375F001F9A26 /* FilledButton.swift in Sources */,
 				0DD0BDED25EEACC900C30B4D /* DataManager.swift in Sources */,
 				0D85605525EFA57A001F9A26 /* HeaterControlViewController.swift in Sources */,
 				0D636B8E25EF047400E37999 /* Filter.swift in Sources */,
