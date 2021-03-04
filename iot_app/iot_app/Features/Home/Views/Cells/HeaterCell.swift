@@ -19,7 +19,9 @@ class HeaterCell: UICollectionViewCell {
     }
     
     // MARK: View elements
-    
+
+    private let icon = ProductIcon("thermometer")
+    private let valueLabel = Caption("50%")
     private let titleLabel = TitleLabel()
     private let switcher = Switcher()
 
@@ -41,7 +43,10 @@ class HeaterCell: UICollectionViewCell {
         layer.cornerRadius = .largeCornerRadius
         layer.borderWidth = 1
         layer.borderColor = UIColor.borderColor?.cgColor
-        addSubviews(titleLabel, switcher)
+        let details = HStack.items([icon, valueLabel], spaced: .smallSpace)
+        addSubviews(details, titleLabel, switcher)
+        details.anchor(left: leftAnchor, paddingLeft: .smallSpace, height: 25)
+        details.centerVertically(to: switcher)
         titleLabel.anchor(top: switcher.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: .smallSpace, paddingLeft: .mediumSpace, paddingRight: .mediumSpace)
         switcher.anchor(top: topAnchor, right: rightAnchor, paddingTop: .smallSpace, paddingRight: .smallSpace)
     }

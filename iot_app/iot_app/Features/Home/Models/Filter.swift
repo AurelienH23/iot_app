@@ -8,7 +8,6 @@
 import Foundation
 
 enum Filter {
-
     case light
     case rollerShutter
     case heater

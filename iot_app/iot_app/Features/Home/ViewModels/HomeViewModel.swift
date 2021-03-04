@@ -10,23 +10,6 @@ import Foundation
 class HomeViewModel {
 
     // MARK: Properties
-    
-//    enum CellId: String, CaseIterable {
-//        case light
-//        case rollerShutter
-//        case heater
-//        
-//        internal func associatedCell() -> UICollectionViewCell.Type {
-//            switch self {
-//            case .light:
-//                return LightCell.self
-//            case .rollerShutter:
-//                return RollerShutterCell.self
-//            case .heater:
-//                return HeaterCell.self
-//            }
-//        }
-//    }
 
     internal var filters: Listener<Set> = Listener(Set<Filter>())
 

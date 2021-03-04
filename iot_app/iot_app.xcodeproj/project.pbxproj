@@ -24,6 +24,7 @@
 		0D85606D25F03836001F9A26 /* IntensityControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D85606C25F03836001F9A26 /* IntensityControl.swift */; };
 		0D85607225F0385D001F9A26 /* TemperatureControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D85607125F0385D001F9A26 /* TemperatureControl.swift */; };
 		0D85607725F03877001F9A26 /* StepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D85607625F03877001F9A26 /* StepView.swift */; };
+		0D85608025F05662001F9A26 /* ProductIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D85607F25F05662001F9A26 /* ProductIcon.swift */; };
 		0DB2273C25EEDFF60033EAF5 /* RollerShutterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2273B25EEDFF60033EAF5 /* RollerShutterCell.swift */; };
 		0DB2274125EEE3DE0033EAF5 /* HeaterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2274025EEE3DE0033EAF5 /* HeaterCell.swift */; };
 		0DB2274625EEE4100033EAF5 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2274525EEE4100033EAF5 /* TitleLabel.swift */; };
@@ -87,6 +88,7 @@
 		0D85606C25F03836001F9A26 /* IntensityControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntensityControl.swift; sourceTree = "<group>"; };
 		0D85607125F0385D001F9A26 /* TemperatureControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureControl.swift; sourceTree = "<group>"; };
 		0D85607625F03877001F9A26 /* StepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepView.swift; sourceTree = "<group>"; };
+		0D85607F25F05662001F9A26 /* ProductIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductIcon.swift; sourceTree = "<group>"; };
 		0DB2273B25EEDFF60033EAF5 /* RollerShutterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollerShutterCell.swift; sourceTree = "<group>"; };
 		0DB2274025EEE3DE0033EAF5 /* HeaterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaterCell.swift; sourceTree = "<group>"; };
 		0DB2274525EEE4100033EAF5 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 			children = (
 				0DD0BDBE25EE92C200C30B4D /* WelcomeTitle.swift */,
 				0DD0BE0025EEC1D100C30B4D /* FilterButton.swift */,
+				0D85607F25F05662001F9A26 /* ProductIcon.swift */,
 				0DB2275625EEE6130033EAF5 /* Cells */,
 			);
 			path = Views;
@@ -520,6 +523,7 @@
 				0D636BA425EFA2FA00E37999 /* AddressCard.swift in Sources */,
 				0D85607725F03877001F9A26 /* StepView.swift in Sources */,
 				0D636B8925EEFF2C00E37999 /* Listener.swift in Sources */,
+				0D85608025F05662001F9A26 /* ProductIcon.swift in Sources */,
 				0DD0BD4925ED996D00C30B4D /* AppDelegate.swift in Sources */,
 				0DB2274625EEE4100033EAF5 /* TitleLabel.swift in Sources */,
 				0DD0BDDA25EEA86A00C30B4D /* User.swift in Sources */,

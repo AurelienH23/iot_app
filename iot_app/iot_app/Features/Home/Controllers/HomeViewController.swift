@@ -133,7 +133,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDelegate
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellWidth = (collectionView.frame.width - 2 * .extraLargeSpace - .mediumSpace) / 2
-        return CGSize(width: cellWidth, height: 120)
+        return CGSize(width: cellWidth, height: 160)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
