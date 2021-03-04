@@ -11,20 +11,8 @@ class DataManager {
 
     // MARK: Properties
 
-    private(set) var user: User? = nil {
-        didSet {
-            userObservers.forEach({$0(user)})
-        }
-    }
-
-    private(set) var devices = [Device]() {
-        didSet {
-            devicesObservers.forEach({$0(devices)})
-        }
-    }
-
-    internal var userObservers = [(User?) -> Void]()
-    internal var devicesObservers = [([Device]) -> Void]()
+    private(set) var user: User? = nil
+    private(set) var devices = [Device]()
 
     // MARK: Lifecycle
 
@@ -39,8 +27,10 @@ class DataManager {
             case .success(let data):
                 self.user = data.user
                 self.devices = data.devices
+                NotificationCenter.default.post(name: .didLoadData, object: nil)
             case .failure(let err):
                 print("Failed fetching data with err:", err)
+                NotificationCenter.default.post(name: .failedLoadingData, object: nil)
             }
         }
     }

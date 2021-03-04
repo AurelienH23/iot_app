@@ -11,10 +11,10 @@ class WelcomeTitle: UILabel {
 
     // MARK: Lifecycle
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(_ text: String?) {
+        super.init(frame: .zero)
         setupViews()
-        welcomeTheUser(named: "--")
+        welcomeTheUser(named: text)
     }
 
     required init?(coder: NSCoder) {

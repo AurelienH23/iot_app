@@ -34,7 +34,7 @@ class HomeViewController: UIViewController {
     // MARK: View elements
 
     private let profileButton = RoundedButton(image: "ic_account", target: self, action: #selector(showProfile))
-    private let titleLabel = WelcomeTitle()
+    private let titleLabel = WelcomeTitle(DataManager.shared.user?.nameToDisplay())
     private let lightsFilter = FilterButton(.light, target: self, action: #selector(didSelectFilter(button:)))
     private let rollerShuttersFilter = FilterButton(.rollerShutter, target: self, action: #selector(didSelectFilter(button:)))
     private let heatersFilter = FilterButton(.heater, target: self, action: #selector(didSelectFilter(button:)))
@@ -51,24 +51,10 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupObservers()
         setupNavBar()
         setupViews()
+        animateViewsIn()
         setupBinders()
-    }
-
-    private func setupObservers() { // FIXME: Observers ne fonctionnent pas tout le temps
-        DataManager.shared.userObservers.append { updatedUser in
-            DispatchQueue.main.async {
-                self.titleLabel.welcomeTheUser(named: updatedUser?.nameToDisplay())
-            }
-        }
-        
-        DataManager.shared.devicesObservers.append { _ in
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }
     }
 
     private func setupNavBar() {
@@ -83,6 +69,13 @@ class HomeViewController: UIViewController {
         titleLabel.anchor(top: profileButton.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: .smallSpace, paddingLeft: .extraLargeSpace, paddingRight: .extraLargeSpace)
         filters.anchor(top: titleLabel.bottomAnchor, left: titleLabel.leftAnchor, paddingTop: .extraLargeSpace)
         collectionView.anchor(top: filters.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
+    }
+
+    private func animateViewsIn() {
+        collectionView.alpha = 0
+        UIView.animate(withDuration: 1, delay: 1, options: .curveEaseIn, animations: {
+            self.collectionView.alpha = 1
+        }, completion: nil)
     }
 
     private func setupBinders() {

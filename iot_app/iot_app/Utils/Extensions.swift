@@ -129,3 +129,12 @@ extension CGFloat {
     }
 
 }
+
+// MARK: Notification.Name
+extension Notification.Name {
+
+    static let didLoadData = Notification.Name("didLoadData")
+    static let failedLoadingData = Notification.Name("failedLoadingData")
+    static let startApp = Notification.Name("startApp")
+
+}

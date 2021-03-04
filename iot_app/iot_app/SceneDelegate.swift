@@ -14,11 +14,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        setupObservers()
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = UINavigationController(rootViewController: HomeViewController())
+        window?.rootViewController = LaunchViewController()
         window?.makeKeyAndVisible()
+    }
+
+    // MARK: Custom funcs
+
+    private func setupObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(startApplication), name: .startApp, object: nil)
+    }
+
+    @objc private func startApplication() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            self.window?.rootViewController = UINavigationController(rootViewController: HomeViewController())
+        })
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
