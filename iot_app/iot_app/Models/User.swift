@@ -28,4 +28,8 @@ struct User: Decodable {
         return formatter.string(from: dateOfbirth)
     }
 
+    internal func getAddress() -> String {
+        return address.fullAddress()
+    }
+
 }

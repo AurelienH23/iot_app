@@ -11,19 +11,20 @@ class ProfileViewController: UIViewController {
 
     // MARK: View elements
 
-    let backButton = RoundedButton(image: "arrow.left", target: self, action: #selector(goBackHome))
-    let editButton = RoundedButton(image: "pencil", target: self, action: #selector(editProfile))
-    let nameLabel = TitleLabel("John Doe", aligned: .center)
-    let addressCaption = Caption("Address")
-    let addressCard = AddressCard()
-    let birthdateCaption = Caption("Birthdate")
-    let birthdateCard = BirthdateCard()
+    private let backButton = RoundedButton(image: "arrow.left", target: self, action: #selector(goBackHome))
+    private let editButton = RoundedButton(image: "pencil", target: self, action: #selector(editProfile))
+    private let nameLabel = TitleLabel("John Doe", aligned: .center)
+    private let addressCaption = Caption("Address")
+    private let addressCard = AddressCard()
+    private let birthdateCaption = Caption("Birthdate")
+    private let birthdateCard = BirthdateCard()
 
     // MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        animateViewsIn()
     }
 
     // MARK: Custom funcs
@@ -36,6 +37,20 @@ class ProfileViewController: UIViewController {
         editButton.anchor(top: view.topAnchor, right: view.rightAnchor, paddingTop: .topPadding + .mediumSpace, paddingRight: .extraLargeSpace)
         nameLabel.anchor(top: backButton.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: .extraLargeSpace, paddingLeft: .extraLargeSpace, paddingRight: .extraLargeSpace)
         details.anchor(top: nameLabel.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: .extraLargeSpace, paddingLeft: .extraLargeSpace, paddingRight: .extraLargeSpace)
+    }
+
+    private func animateViewsIn() {
+        let animatedViews = [nameLabel, addressCaption, addressCard, birthdateCaption, birthdateCard]
+        animatedViews.forEach { (subview) in
+            subview.alpha = 0
+            subview.transform = CGAffineTransform(translationX: view.frame.width, y: 0)
+        }
+        for (i, subview) in animatedViews.enumerated() {
+            UIView.animate(withDuration: 1, delay: TimeInterval(i) * 0.1, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
+                subview.alpha = 1
+                subview.transform = .identity
+            }, completion: nil)
+        }
     }
 
     @objc private func goBackHome() {

@@ -13,4 +13,9 @@ struct Address: Decodable {
     private(set) var street: String
     private(set) var streetCode: String
     private(set) var country: String
+
+    internal func fullAddress() -> String {
+        let addressComponents = [streetCode, street, "\(postalCode)", city, country]
+        return addressComponents.joined(separator: " ")
+    }
 }

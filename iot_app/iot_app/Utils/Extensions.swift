@@ -138,3 +138,12 @@ extension Notification.Name {
     static let startApp = Notification.Name("startApp")
 
 }
+
+// MARK: String
+extension String {
+
+    func adaptedForUrl() -> String {
+        return self.replacingOccurrences(of: " ", with: "%20")
+    }
+
+}

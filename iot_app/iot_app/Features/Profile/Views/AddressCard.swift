@@ -13,9 +13,10 @@ class AddressCard: UIView {
 
     // MARK: View elements
 
-    let streetLabel = DetailLabel("Rue")
-    let cityLabel = DetailLabel("Ville")
-    let countryLabel = DetailLabel("Pays")
+    private let streetLabel = DetailLabel("Rue")
+    private let cityLabel = DetailLabel("Ville")
+    private let countryLabel = DetailLabel("Pays")
+    private let mapButton = MapButton()
 
     // MARK: Lifecycle
 
@@ -39,7 +40,7 @@ class AddressCard: UIView {
         layer.borderColor = UIColor.borderColor?.cgColor
         backgroundColor = .elementBackground
         
-        let details = VStack.items([streetLabel, cityLabel, countryLabel], spaced: .smallSpace)
+        let details = VStack.items([streetLabel, cityLabel, countryLabel, mapButton], spaced: .smallSpace)
         addSubview(details)
         details.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor, paddingTop: .largeSpace, paddingLeft: .largeSpace, paddingRight: .largeSpace)
     }
