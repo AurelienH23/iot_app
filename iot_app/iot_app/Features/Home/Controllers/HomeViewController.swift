@@ -7,34 +7,18 @@
 
 import UIKit
 
-// TODO: Ajouter un helper pour le collection view afin de mieux le tester
 class HomeViewController: UIViewController {
 
     // MARK: Properties
 
-    let viewModel = HomeViewModel()
-
-    enum CellId: String, CaseIterable {
-        case light
-        case rollerShutter
-        case heater
-        
-        internal func associatedCell() -> UICollectionViewCell.Type {
-            switch self {
-            case .light:
-                return LightCell.self
-            case .rollerShutter:
-                return RollerShutterCell.self
-            case .heater:
-                return HeaterCell.self
-            }
-        }
-    }
+    private let viewModel = HomeViewModel()
+    private let helper = HomeHelper()
 
     // MARK: View elements
 
     private let profileButton = RoundedButton(image: "ic_account", target: self, action: #selector(showProfile))
     private let titleLabel = WelcomeTitle(DataManager.shared.user?.nameToDisplay())
+    // TODO: Mettre les filter dans une scroll view horizontale
     private let lightsFilter = FilterButton(.light, target: self, action: #selector(didSelectFilter(button:)))
     private let rollerShuttersFilter = FilterButton(.rollerShutter, target: self, action: #selector(didSelectFilter(button:)))
     private let heatersFilter = FilterButton(.heater, target: self, action: #selector(didSelectFilter(button:)))
@@ -43,7 +27,7 @@ class HomeViewController: UIViewController {
         cv.backgroundColor = .clear
         cv.dataSource = self
         cv.delegate = self
-        CellId.allCases.forEach({cv.register($0.associatedCell(), forCellWithReuseIdentifier: $0.rawValue)})
+        helper.setupCells(for: cv)
         return cv
     }()
 
@@ -103,21 +87,8 @@ extension HomeViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let currentDevice = viewModel.selectedDevice(at: indexPath.item)
-        switch currentDevice.productType {
-        case "Light":
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId.light.rawValue, for: indexPath) as! LightCell
-            cell.device = currentDevice
-            return cell
-        case "RollerShutter":
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId.rollerShutter.rawValue, for: indexPath) as! RollerShutterCell
-            cell.device = currentDevice
-            return cell
-        default:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId.heater.rawValue, for: indexPath) as! HeaterCell
-            cell.device = currentDevice
-            return cell
-        }
+        let currentDevice = viewModel.getDevice(at: indexPath.item)
+        return helper.cellForItem(at: indexPath, from: collectionView, with: currentDevice)
     }
 
 }
@@ -125,24 +96,23 @@ extension HomeViewController: UICollectionViewDataSource {
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellWidth = (collectionView.frame.width - 2 * .extraLargeSpace - .mediumSpace) / 2
-        return CGSize(width: cellWidth, height: 160)
+        return helper.cellSize(from: collectionView)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return .mediumSpace
+        return helper.cellSpacing()
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return .mediumSpace
+        return helper.cellSpacing()
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: .mediumSpace, left: .extraLargeSpace, bottom: .extraLargeSpace, right: .extraLargeSpace)
+        return helper.insets()
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedDevice = viewModel.selectedDevice(at: indexPath.item)
+        let selectedDevice = viewModel.getDevice(at: indexPath.item)
         guard let control = selectedDevice.associatedControl() else { return }
         present(control, animated: true, completion: nil)
     }

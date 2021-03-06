@@ -11,10 +11,10 @@ class LaunchViewController: UIViewController {
 
     // MARK: View elements
     
-    let logo = UIImageView(image: UIImage(named: "logo"))
-    let loader = UIActivityIndicatorView(style: .white)
-    let errorText = Caption("Erreur de connexion")
-    let tryAgainButton = LightButton("Try again", target: self, action: #selector(reloadApplicationData))
+    private let logo = UIImageView(image: UIImage(named: "logo"))
+    private let loader = UIActivityIndicatorView(style: .white)
+    private let errorText = Caption("Erreur de connexion")
+    private let tryAgainButton = LightButton("Try again", target: self, action: #selector(reloadApplicationData))
 
     // MARK: Lifecycle
 
@@ -80,36 +80,6 @@ class LaunchViewController: UIViewController {
             errorView.removeFromSuperview()
         }
         loadApplicationData()
-    }
-
-}
-
-
-class LightButton: UIButton {
-    
-    // MARK: Properties
-    
-    // MARK: View elements
-    
-    // MARK: Lifecycle
-    
-    init(_ title: String, target: Any?, action: Selector) {
-        super.init(frame: .zero)
-        setTitle(title, for: .normal)
-        addTarget(target, action: action, for: .touchUpInside)
-        setupViews()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    // MARK: Custom funcs
-    
-    private func setupViews() {
-        anchor(height: .standardTouchSpace)
-        backgroundColor = .elementBackground
-        layer.cornerRadius = .standardTouchSpace / 2
     }
 
 }

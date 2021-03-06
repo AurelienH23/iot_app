@@ -36,7 +36,7 @@ class HomeViewModel {
         }
     }
 
-    internal func selectedDevice(at index: Int) -> Device {
+    internal func getDevice(at index: Int) -> Device {
         var devices = DataManager.shared.devices
         if !filters.value.isEmpty {
             devices = DataManager.shared.devices.filter { (device) -> Bool in
