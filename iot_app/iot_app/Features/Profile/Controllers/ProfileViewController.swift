@@ -13,7 +13,7 @@ class ProfileViewController: UIViewController {
 
     private let backButton = RoundedButton(image: "arrow.left", target: self, action: #selector(goBackHome))
     private let editButton = RoundedButton(image: "pencil", target: self, action: #selector(editProfile))
-    private let nameLabel = TitleLabel("John Doe", aligned: .center)
+    private let nameLabel = TitleLabel(aligned: .center)
     private let addressCaption = Caption("Address")
     private let addressCard = AddressCard()
     private let birthdateCaption = Caption("Birthdate")
@@ -24,6 +24,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        setupContent()
         animateViewsIn()
     }
 
@@ -37,6 +38,13 @@ class ProfileViewController: UIViewController {
         editButton.anchor(top: view.topAnchor, right: view.rightAnchor, paddingTop: .topPadding + .mediumSpace, paddingRight: .extraLargeSpace)
         nameLabel.anchor(top: backButton.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: .extraLargeSpace, paddingLeft: .extraLargeSpace, paddingRight: .extraLargeSpace)
         details.anchor(top: nameLabel.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: .extraLargeSpace, paddingLeft: .extraLargeSpace, paddingRight: .extraLargeSpace)
+    }
+
+    private func setupContent() {
+        guard let user = DataManager.shared.user else { return }
+        nameLabel.text = user.fullName()
+        addressCard.setupContent(for: user)
+        birthdateCard.setupContent(for: user)
     }
 
     private func animateViewsIn() {

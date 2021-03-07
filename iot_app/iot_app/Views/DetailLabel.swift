@@ -9,13 +9,9 @@ import UIKit
 
 class DetailLabel: UILabel {
 
-    // MARK: Properties
-
-    // MARK: View elements
-
     // MARK: Lifecycle
 
-    init(_ text: String, aligned: NSTextAlignment = .left) {
+    init(_ text: String? = nil, aligned: NSTextAlignment = .left) {
         super.init(frame: .zero)
         self.text = text
         self.textAlignment = aligned

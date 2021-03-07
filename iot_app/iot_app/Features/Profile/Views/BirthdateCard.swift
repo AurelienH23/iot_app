@@ -9,19 +9,15 @@ import UIKit
 
 class BirthdateCard: UIView {
 
-    // MARK: Properties
-
     // MARK: View elements
 
-    let birthdateLabel = DetailLabel("27/01/1995", aligned: .center)
+    private let birthdateLabel = DetailLabel(aligned: .center)
 
     // MARK: Lifecycle
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
-        guard let user = DataManager.shared.user else { return }
-        updateContent(for: user)
     }
 
     required init?(coder: NSCoder) {
@@ -41,7 +37,7 @@ class BirthdateCard: UIView {
         birthdateLabel.anchor(to: self)
     }
 
-    private func updateContent(for user: User) {
+    internal func setupContent(for user: User) {
         birthdateLabel.text = user.birthdateToString()
     }
 
