@@ -9,7 +9,7 @@ import UIKit
 
 class HStack: UIStackView {
 
-    static internal func items(_ items: [UIView], spaced: CGFloat, displayed: UIStackView.Distribution = .fill) -> UIStackView {
+    static internal func items(_ items: [UIView], spaced: CGFloat = 0, displayed: UIStackView.Distribution = .fill) -> UIStackView {
         let stack = UIStackView(arrangedSubviews: items)
         stack.axis = .horizontal
         stack.distribution = displayed

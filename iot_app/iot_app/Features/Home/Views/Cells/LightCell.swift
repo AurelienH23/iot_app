@@ -15,6 +15,8 @@ class LightCell: UICollectionViewCell {
         didSet {
             guard let device = device else { return }
             titleLabel.text = device.deviceName
+            switcher.isOn = device.isOn()
+            valueLabel.text = "\(device.intensity ?? 0)%"
         }
     }
     
@@ -22,7 +24,7 @@ class LightCell: UICollectionViewCell {
     
     private let icon = ProductIcon("lightbulb")
     private let valueLabel = Caption("50%")
-    private let titleLabel = TitleLabel("TEST de title")
+    private let titleLabel = TitleLabel()
     private let switcher = Switcher()
 
     // MARK: Lifecycle
@@ -35,6 +37,13 @@ class LightCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        valueLabel.text = nil
+        titleLabel.text = nil
+        switcher.isOn = false
+    }
     
     // MARK: Custom funcs
     
@@ -43,7 +52,7 @@ class LightCell: UICollectionViewCell {
         layer.cornerRadius = .largeCornerRadius
         layer.borderWidth = 1
         layer.borderColor = UIColor.borderColor?.cgColor
-        let details = HStack.items([icon, valueLabel], spaced: .smallSpace)
+        let details = HStack.items([icon, valueLabel])
         addSubviews(details, titleLabel, switcher)
         details.anchor(left: leftAnchor, paddingLeft: .smallSpace, height: 25)
         details.centerVertically(to: switcher)

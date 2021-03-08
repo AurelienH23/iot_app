@@ -15,6 +15,8 @@ class HeaterCell: UICollectionViewCell {
         didSet {
             guard let device = device else { return }
             titleLabel.text = device.deviceName
+            switcher.isOn = device.isOn()
+            valueLabel.text = "\(device.temperature ?? 0)%"
         }
     }
     
@@ -35,6 +37,13 @@ class HeaterCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        valueLabel.text = nil
+        titleLabel.text = nil
+        switcher.isOn = false
+    }
     
     // MARK: Custom funcs
     
@@ -43,7 +52,7 @@ class HeaterCell: UICollectionViewCell {
         layer.cornerRadius = .largeCornerRadius
         layer.borderWidth = 1
         layer.borderColor = UIColor.borderColor?.cgColor
-        let details = HStack.items([icon, valueLabel], spaced: .smallSpace)
+        let details = HStack.items([icon, valueLabel])
         addSubviews(details, titleLabel, switcher)
         details.anchor(left: leftAnchor, paddingLeft: .smallSpace, height: 25)
         details.centerVertically(to: switcher)

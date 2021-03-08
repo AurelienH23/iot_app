@@ -15,6 +15,7 @@ class RollerShutterCell: UICollectionViewCell {
         didSet {
             guard let device = device else { return }
             titleLabel.text = device.deviceName
+            valueLabel.text = "\(device.position ?? 0)%"
         }
     }
     
@@ -34,6 +35,12 @@ class RollerShutterCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        valueLabel.text = nil
+        titleLabel.text = nil
+    }
     
     // MARK: Custom funcs
     
@@ -42,7 +49,7 @@ class RollerShutterCell: UICollectionViewCell {
         layer.cornerRadius = .largeCornerRadius
         layer.borderWidth = 1
         layer.borderColor = UIColor.borderColor?.cgColor
-        let details = HStack.items([icon, valueLabel], spaced: .smallSpace)
+        let details = HStack.items([icon, valueLabel])
         addSubviews(details, titleLabel)
         details.anchor(top: topAnchor, left: leftAnchor, paddingTop: 10, paddingLeft: .smallSpace, height: 25)
         titleLabel.anchor(top: details.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 10, paddingLeft: .mediumSpace, paddingRight: .mediumSpace)

@@ -41,4 +41,8 @@ struct Device: Decodable {
         }
     }
 
+    internal func isOn() -> Bool {
+        return mode == "ON"
+    }
+
 }

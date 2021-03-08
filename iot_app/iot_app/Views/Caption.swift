@@ -9,13 +9,9 @@ import UIKit
 
 class Caption: UILabel {
 
-    // MARK: Properties
-
-    // MARK: View elements
-
     // MARK: Lifecycle
 
-    init(_ text: String) {
+    init(_ text: String? = nil) {
         super.init(frame: .zero)
         self.text = text
         setupViews()
