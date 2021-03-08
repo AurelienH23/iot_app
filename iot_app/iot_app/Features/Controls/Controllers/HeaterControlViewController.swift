@@ -23,9 +23,16 @@ class HeaterControlViewController: ControlViewController {
         temperatureControl.temperature.bind { (value) in
             self.intensityValue.updateValue(with: value)
         }
+
+        if let deviceTemperature = device.temperature {
+            temperatureControl.temperature.value = CGFloat(deviceTemperature)
+            temperatureControl.updateSteps(for: CGFloat(deviceTemperature))
+        }
+        bottomView.updateButton(for: device)
     }
 
     @objc private func didChangeValue(gesture: UIPanGestureRecognizer) {
+        guard device.isOn() else { return }
         switch gesture.state {
         case .began:
             temperatureControl.updateStartValue()

@@ -23,6 +23,12 @@ class RollerShutterControlViewController: ControlViewController {
         intensityControl.intensity.bind { (value) in
             self.intensityValue.updateValue(with: value)
         }
+
+        if let devicePosition = device.position {
+            intensityControl.intensity.value = CGFloat(devicePosition)
+            view.layoutIfNeeded()
+            intensityControl.setValueHeight(to: CGFloat(devicePosition))
+        }
     }
 
     @objc private func didChangeValue(gesture: UIPanGestureRecognizer) {

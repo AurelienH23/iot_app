@@ -72,4 +72,8 @@ class IntensityControl: UIView {
         tmpStartValue = heightConstraint?.constant ?? 0
     }
 
+    internal func setValueHeight(to value: CGFloat) {
+        heightConstraint?.constant = (value / 100) * frame.height
+    }
+
 }

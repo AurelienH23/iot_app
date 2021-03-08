@@ -31,6 +31,7 @@ class DataManager {
     }
 
     internal func update(_ device: Device) {
+        updateLocalDevice(device)
         guard let index = devices.firstIndex(where: {$0.id == device.id}) else { return }
         devices.remove(at: index)
         devices.insert(device, at: index)
@@ -63,6 +64,8 @@ class DataManager {
             return false
         }
     }
+
+    // MARK: - Fetch data
 
     private func fetchLocalData() {
         fetchLocalUser()
@@ -104,7 +107,6 @@ class DataManager {
                 if let id = object.value(forKey: "id") as? Int,
                    let deviceName = object.value(forKey: "deviceName") as? String,
                    let productType = object.value(forKey: "productType") as? String {
-                    print(productType, object)
                     switch productType {
                     case "Light":
                         guard let intensity = object.value(forKey: "intensity") as? Int else { return }
@@ -145,6 +147,8 @@ class DataManager {
             }
         }
     }
+
+    // MARK: - Save data
 
     private func saveUser(_ user: User) {
         self.user = user
@@ -199,6 +203,41 @@ class DataManager {
             try managedContext.save()
         } catch {
             print("Failed saving device locally")
+        }
+    }
+
+    // MARK: - Update data
+
+    private func updateLocalDevice(_ device: Device) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "DeviceEntity")
+        let predicate = NSPredicate(format: "id == %d", device.id)
+        fetchRequest.predicate = predicate
+        do {
+            let fetchedObjects = try managedContext.fetch(fetchRequest)
+            if let fetchdedDevice = fetchedObjects.first {
+                switch device.productType {
+                case "Light":
+                    fetchdedDevice.setValue(device.intensity, forKey: "intensity")
+                    fetchdedDevice.setValue(device.mode, forKey: "mode")
+                case "RollerShutter":
+                    fetchdedDevice.setValue(device.position, forKey: "position")
+                case "Heater":
+                    fetchdedDevice.setValue(device.temperature, forKey: "temperature")
+                    fetchdedDevice.setValue(device.mode, forKey: "mode")
+                default:
+                    break
+                }
+
+                do {
+                    try managedContext.save()
+                } catch {
+                    print("Failed updating data locally")
+                }
+            }
+        } catch {
+            print("Failed fetching data for updating")
         }
     }
 

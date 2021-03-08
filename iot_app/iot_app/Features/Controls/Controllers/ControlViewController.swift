@@ -28,7 +28,7 @@ class ControlViewController: UIViewController {
     private let deleteButton = RoundedButton(image: "trash", target: self, action: #selector(deleteDevice))
     private(set) lazy var deviceName = TitleLabel(device.deviceName)
     private(set) var intensityValue = ControlValue(50)
-    private lazy var bottomView = SwitchableView(delegate: self)
+    internal lazy var bottomView = SwitchableView(delegate: self)
 
     // MARK: Lifecycle
     

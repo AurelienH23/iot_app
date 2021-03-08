@@ -23,9 +23,17 @@ class LightControlViewController: ControlViewController {
         intensityControl.intensity.bind { (value) in
             self.intensityValue.updateValue(with: value)
         }
+
+        if let deviceIntensity = device.intensity {
+            intensityControl.intensity.value = CGFloat(deviceIntensity)
+            view.layoutIfNeeded()
+            intensityControl.setValueHeight(to: CGFloat(deviceIntensity))
+        }
+        bottomView.updateButton(for: device)
     }
 
     @objc private func didChangeValue(gesture: UIPanGestureRecognizer) {
+        guard device.isOn() else { return }
         switch gesture.state {
         case .began:
             intensityControl.updateStartValue()

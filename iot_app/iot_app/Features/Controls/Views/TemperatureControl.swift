@@ -64,7 +64,7 @@ class TemperatureControl: UIView {
         tmpStartValue = temperature.value
     }
 
-    private func updateSteps(for value: CGFloat) { // TODO: Gérer le .5 en multipliant tout par deux
+    internal func updateSteps(for value: CGFloat) { // TODO: Gérer le .5 en multipliant tout par deux
         let startingStepIndex = getStartingStepIndex(for: value)
         let isDecimal = isHalfStep(for: value)
         guard let steps = subviews.first as? UIStackView else { return }
