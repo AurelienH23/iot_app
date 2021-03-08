@@ -15,10 +15,11 @@ class FilledButton: UIButton {
     
     // MARK: Lifecycle
     
-    init(_ title: String) {
+    init(_ title: String, target: Any?, action: Selector) {
         super.init(frame: .zero)
         setTitle(title, for: .normal)
         setupViews()
+        addTarget(target, action: action, for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
@@ -33,6 +34,11 @@ class FilledButton: UIButton {
         layer.cornerRadius = .largeCornerRadius
         setTitleColor(.white, for: .normal)
         titleLabel?.font = .boldSystemFont(ofSize: 16)
+    }
+
+    internal func update(isOn: Bool) {
+        setTitle(isOn ? "ON" : "OFF", for: .normal)
+        backgroundColor = isOn ? .accentColor : .textGray
     }
 
 }

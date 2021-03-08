@@ -15,7 +15,12 @@ class ControlViewController: UIViewController {
 
     // MARK: Properties
 
-    let device: Device
+    var device: Device {
+        didSet {
+            DataManager.shared.update(device)
+            updateViews(for: device)
+        }
+    }
 
     // MARK: View elements
 
@@ -23,7 +28,7 @@ class ControlViewController: UIViewController {
     private let deleteButton = RoundedButton(image: "trash", target: self, action: #selector(deleteDevice))
     private(set) lazy var deviceName = TitleLabel(device.deviceName)
     private(set) var intensityValue = ControlValue(50)
-    private let bottomView = SwitchableView()
+    private lazy var bottomView = SwitchableView(delegate: self)
 
     // MARK: Lifecycle
     
@@ -41,6 +46,11 @@ class ControlViewController: UIViewController {
         setupTopButtons()
         setupViews()
         setupBottomViewIfNeeded()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.post(name: .devicesDidChange, object: nil)
     }
 
     // MARK: Custom funcs
@@ -68,8 +78,12 @@ class ControlViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
-    @objc private func deleteDevice() {
-        // delete device here
+    internal func updateViews(for device: Device) {
+        bottomView.updateButton(for: device)
+    }
+
+    @objc internal func deleteDevice() {
+        // override this method
     }
 
 }
@@ -78,6 +92,14 @@ extension ControlViewController: Switchable {
 
     @objc var isSwitchable: Bool {
         return true
+    }
+
+}
+
+extension ControlViewController: SwitchableDelegate {
+
+    @objc func didSwitchMode() {
+        // override this method
     }
 
 }

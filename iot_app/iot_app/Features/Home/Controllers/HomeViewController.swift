@@ -35,10 +35,15 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupObservers()
         setupNavBar()
         setupViews()
         animateViewsIn()
         setupBinders()
+    }
+
+    private func setupObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadCollection), name: .devicesDidChange, object: nil)
     }
 
     private func setupNavBar() {
@@ -75,6 +80,10 @@ class HomeViewController: UIViewController {
 
     @objc private func didSelectFilter(button: FilterButton) {
         viewModel.updateFilters(with: button.filter, if: button.isFilterSelected)
+    }
+
+    @objc private func reloadCollection() {
+        collectionView.reloadSections([0])
     }
 
 }

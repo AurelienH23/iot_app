@@ -33,6 +33,8 @@ class RollerShutterControlViewController: ControlViewController {
             let translated = gesture.translation(in: intensityControl)
             let verticalTranslation = translated.y
             intensityControl.didSlideControl(with: verticalTranslation)
+        case .ended:
+            device.setPosition(to: Int(intensityControl.intensity.value))
         default:
             break
         }

@@ -30,7 +30,13 @@ class DataManager {
         }
     }
 
-    func resetAllRecords(in entity : String) {
+    internal func update(_ device: Device) {
+        guard let index = devices.firstIndex(where: {$0.id == device.id}) else { return }
+        devices.remove(at: index)
+        devices.insert(device, at: index)
+    }
+
+    private func resetAllRecords(in entity : String) {
         let context = ( UIApplication.shared.delegate as! AppDelegate ).persistentContainer.viewContext
         let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)

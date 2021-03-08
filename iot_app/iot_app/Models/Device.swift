@@ -45,4 +45,19 @@ struct Device: Decodable {
         return mode == "ON"
     }
 
+    internal mutating func switchMode() {
+        mode = mode == "ON" ? "OFF" : "ON"
+    }
+
+    internal mutating func setIntensity(to value: Int) {
+        intensity = value
+    }
+
+    internal mutating func setTemperature(to value: Float) {
+        temperature = value
+    }
+
+    internal mutating func setPosition(to value: Int) {
+        position = value
+    }
 }

@@ -7,18 +7,25 @@
 
 import UIKit
 
+protocol SwitchableDelegate: class {
+    func didSwitchMode()
+}
+
 class SwitchableView: UIView {
     
     // MARK: Properties
-    
+
+    weak var delegate: SwitchableDelegate?
+
     // MARK: View elements
 
-    private let button = FilledButton("ON")
+    private let button = FilledButton("ON", target: self, action: #selector(didSwitchMode))
     
     // MARK: Lifecycle
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(delegate: SwitchableDelegate) {
+        self.delegate = delegate
+        super.init(frame: .zero)
         setupViews()
     }
     
@@ -32,6 +39,14 @@ class SwitchableView: UIView {
         backgroundColor = .elementBackground
         addSubview(button)
         button.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor, paddingTop: .mediumSpace, paddingLeft: .extraLargeSpace, paddingRight: .extraLargeSpace)
+    }
+
+    @objc private func didSwitchMode() {
+        delegate?.didSwitchMode()
+    }
+
+    internal func updateButton(for device: Device) {
+        button.update(isOn: device.isOn())
     }
 
 }

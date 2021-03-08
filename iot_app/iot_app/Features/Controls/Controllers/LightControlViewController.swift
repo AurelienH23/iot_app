@@ -33,9 +33,19 @@ class LightControlViewController: ControlViewController {
             let translated = gesture.translation(in: intensityControl)
             let verticalTranslation = -translated.y
             intensityControl.didSlideControl(with: verticalTranslation)
+        case .ended:
+            device.setIntensity(to: Int(intensityControl.intensity.value))
         default:
             break
         }
+    }
+
+}
+
+extension LightControlViewController {
+
+    override func didSwitchMode() {
+        device.switchMode()
     }
 
 }

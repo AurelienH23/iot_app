@@ -33,9 +33,19 @@ class HeaterControlViewController: ControlViewController {
             let translated = gesture.translation(in: temperatureControl)
             let verticalTranslation = -translated.y
             temperatureControl.didSlideControl(with: verticalTranslation)
+        case .ended:
+            device.setTemperature(to: Float(temperatureControl.temperature.value))
         default:
             break
         }
+    }
+
+}
+
+extension HeaterControlViewController {
+
+    override func didSwitchMode() {
+        device.switchMode()
     }
 
 }
