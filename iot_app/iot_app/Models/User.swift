@@ -8,9 +8,9 @@
 import Foundation
 
 struct User: Decodable {
-    private let firstName: String
-    private let lastName: String
-    private let birthDate: Int
+    private(set) var firstName: String
+    private(set) var lastName: String
+    private(set) var birthDate: Int
     private(set) var address: Address
 
     internal func nameToDisplay() -> String {
