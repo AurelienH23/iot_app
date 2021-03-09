@@ -44,6 +44,7 @@ class HomeViewController: UIViewController {
 
     private func setupObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadCollection), name: .devicesDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(welcomeNewUser), name: .userDidChange, object: nil)
     }
 
     private func setupNavBar() {
@@ -84,6 +85,11 @@ class HomeViewController: UIViewController {
 
     @objc private func reloadCollection() {
         collectionView.reloadSections([0])
+    }
+
+    @objc private func welcomeNewUser() {
+        guard let user = DataManager.shared.user else { return }
+        titleLabel.welcomeTheUser(named: user.nameToDisplay())
     }
 
 }

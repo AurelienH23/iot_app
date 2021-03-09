@@ -21,6 +21,14 @@ struct User: Decodable {
         return firstName + " " + lastName
     }
 
+    internal mutating func setFirstname(_ newName: String) {
+        firstName = newName
+    }
+
+    internal mutating func setLastname(_ newName: String) {
+        lastName = newName
+    }
+
     internal func birthdateToString() -> String {
         let dateOfbirth = Date(timeIntervalSinceReferenceDate: TimeInterval(birthDate))
         let formatter = DateFormatter()

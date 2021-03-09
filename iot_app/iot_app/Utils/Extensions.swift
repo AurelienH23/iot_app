@@ -137,6 +137,7 @@ extension Notification.Name {
     static let failedLoadingData = Notification.Name("failedLoadingData")
     static let startApp = Notification.Name("startApp")
     static let devicesDidChange = Notification.Name("devicesDidChange")
+    static let userDidChange = Notification.Name("userDidChange")
 
 }
 

@@ -30,6 +30,14 @@ class DataManager {
         }
     }
 
+    internal func updateUser(firstname: String, lastname: String) {
+        user?.setFirstname(firstname)
+        user?.setLastname(lastname)
+        guard let user = user else { return }
+        updateLocalUser(with: user)
+        NotificationCenter.default.post(name: .userDidChange, object: nil)
+    }
+
     internal func update(_ device: Device) {
         updateLocalDevice(device)
         guard let index = devices.firstIndex(where: {$0.id == device.id}) else { return }
@@ -229,6 +237,27 @@ class DataManager {
                 default:
                     break
                 }
+
+                do {
+                    try managedContext.save()
+                } catch {
+                    print("Failed updating data locally")
+                }
+            }
+        } catch {
+            print("Failed fetching data for updating")
+        }
+    }
+
+    private func updateLocalUser(with user: User) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "UserEntity")
+        do {
+            let fetchedObjects = try managedContext.fetch(fetchRequest)
+            if let fetchdedUser = fetchedObjects.first {
+                fetchdedUser.setValue(user.firstName, forKey: "firstname")
+                fetchdedUser.setValue(user.lastName, forKey: "lastname")
 
                 do {
                     try managedContext.save()

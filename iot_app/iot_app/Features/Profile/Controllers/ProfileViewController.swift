@@ -23,12 +23,17 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupObservers()
         setupViews()
         setupContent()
         animateViewsIn()
     }
 
     // MARK: Custom funcs
+
+    private func setupObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateContentForUser), name: .userDidChange, object: nil)
+    }
 
     private func setupViews() {
         view.backgroundColor = .backgroundColor
@@ -61,12 +66,30 @@ class ProfileViewController: UIViewController {
         }
     }
 
+    @objc private func updateContentForUser() {
+        guard let user = DataManager.shared.user else { return }
+        nameLabel.text = user.fullName()
+    }
+
     @objc private func goBackHome() {
         navigationController?.popViewController(animated: true)
     }
 
     @objc private func editProfile() {
-        // do stuff here
+        let alert = UIAlertController(title: "Modifier votre nom", message: nil, preferredStyle: .alert)
+        alert.addTextField { (textfield) in
+            textfield.placeholder = "Prénom"
+        }
+        alert.addTextField { (textfield) in
+            textfield.placeholder = "Nom"
+        }
+        alert.addAction(UIAlertAction(title: "Annuler", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Valider", style: .destructive, handler: { (action) in
+            guard let firstnameInput = alert.textFields?[0], firstnameInput.text != nil, firstnameInput.text != "",
+                  let lastnameInput = alert.textFields?[1], lastnameInput.text != nil, lastnameInput.text != "" else { return }
+            DataManager.shared.updateUser(firstname: firstnameInput.text!, lastname: lastnameInput.text!)
+        }))
+        present(alert, animated: true, completion: nil)
     }
 
 }
