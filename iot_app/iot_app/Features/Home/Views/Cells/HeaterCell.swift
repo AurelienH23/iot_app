@@ -16,14 +16,14 @@ class HeaterCell: UICollectionViewCell {
             guard let device = device else { return }
             titleLabel.text = device.deviceName
             switcher.isOn = device.isOn()
-            valueLabel.text = "\(device.temperature ?? 0)%"
+            valueLabel.text = device.getDisplayedTemperature() ?? "0°C"
         }
     }
     
     // MARK: View elements
 
     private let icon = ProductIcon("thermometer")
-    private let valueLabel = Caption("50%")
+    private let valueLabel = Caption("20°C")
     private let titleLabel = TitleLabel()
     private let switcher = Switcher()
 

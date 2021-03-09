@@ -27,7 +27,7 @@ class ControlViewController: UIViewController {
     private let dismissButton = RoundedButton(image: "chevron.down", target: self, action: #selector(goBackHome))
     private let deleteButton = RoundedButton(image: "trash", target: self, action: #selector(deleteDevice))
     private(set) lazy var deviceName = TitleLabel(device.deviceName)
-    private(set) var intensityValue = ControlValue(50)
+    private(set) var intensityValue = ControlValue()
     internal lazy var bottomView = SwitchableView(delegate: self)
 
     // MARK: Lifecycle

@@ -60,4 +60,12 @@ struct Device: Decodable {
     internal mutating func setPosition(to value: Int) {
         position = value
     }
+
+    internal func getDisplayedTemperature() -> String? {
+        guard let temperature = temperature else { return nil }
+        let tmpInt = Int(temperature * 2)
+        let tmpValue = Float(tmpInt) / 2
+        return String(format: "%.1f", tmpValue) + "°C"
+    }
+
 }

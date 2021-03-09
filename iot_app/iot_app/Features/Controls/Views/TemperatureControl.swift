@@ -64,7 +64,7 @@ class TemperatureControl: UIView {
         tmpStartValue = temperature.value
     }
 
-    internal func updateSteps(for value: CGFloat) { // TODO: Gérer le .5 en multipliant tout par deux
+    internal func updateSteps(for value: CGFloat) {
         let startingStepIndex = getStartingStepIndex(for: value)
         let isDecimal = isHalfStep(for: value)
         guard let steps = subviews.first as? UIStackView else { return }
@@ -82,13 +82,10 @@ class TemperatureControl: UIView {
     }
 
     private func isHalfStep(for value: CGFloat) -> Bool {
-        for i in stride(from: 7, to: 28.5, by: 0.5) {
-            if value < CGFloat(i) {
-                let lastValue = i - 0.5
-                let remainder = lastValue.truncatingRemainder(dividingBy: Double(Int(lastValue)))
-                return remainder > 0.5
-            }
-        }
-        return false
+        let tmpValue = value * 2
+        let tmpInt = Int(tmpValue)
+        let realValue = CGFloat(tmpInt) / 2
+        return String(format: "%.1f", realValue).last == "5"
     }
+
 }

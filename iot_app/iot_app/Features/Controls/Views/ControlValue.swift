@@ -9,21 +9,10 @@ import UIKit
 
 class ControlValue: UILabel {
 
-    // MARK: Properties
-
-    private var value: Int {
-        didSet {
-            text = "\(value)"
-        }
-    }
-
-    // MARK: View elements
-
     // MARK: Lifecycle
 
-    init(_ value: Int) {
-        self.value = value
-        super.init(frame: .zero)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setupViews()
     }
 
@@ -34,14 +23,19 @@ class ControlValue: UILabel {
     // MARK: Custom funcs
 
     private func setupViews() {
-        text = "\(value)"
         textColor = .textColor
         textAlignment = .center
         font = .boldSystemFont(ofSize: 30)
     }
 
     internal func updateValue(with newValue: CGFloat) {
-        value = Int(newValue)
+        text = "\(Int(newValue))"
+    }
+
+    internal func updateTemperature(with newValue: CGFloat) {
+        let tmpInt = Int(newValue * 2)
+        let tmpValue = Float(tmpInt) / 2
+        text = String(format: "%.1f", tmpValue) + "°C"
     }
 
 }

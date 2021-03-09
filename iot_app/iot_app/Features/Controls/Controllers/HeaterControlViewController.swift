@@ -21,7 +21,7 @@ class HeaterControlViewController: ControlViewController {
         temperatureControl.addGestureRecognizer(pan)
         
         temperatureControl.temperature.bind { (value) in
-            self.intensityValue.updateValue(with: value)
+            self.intensityValue.updateTemperature(with: value)
         }
 
         if let deviceTemperature = device.temperature {
