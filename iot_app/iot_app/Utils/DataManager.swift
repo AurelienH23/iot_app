@@ -21,6 +21,16 @@ class DataManager {
 
     // MARK: Custom funcs
 
+    private func saveContext(with message: String) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        do {
+            try managedContext.save()
+        } catch {
+            print(message)
+        }
+    }
+
     internal func startup() {
         print("Start up DataManager")
         if isUserSavedInLocal() {
@@ -49,13 +59,10 @@ class DataManager {
         let context = ( UIApplication.shared.delegate as! AppDelegate ).persistentContainer.viewContext
         let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
-        do
-        {
+        do {
             try context.execute(deleteRequest)
             try context.save()
-        }
-        catch
-        {
+        } catch {
             print ("There was an error")
         }
     }
@@ -173,11 +180,7 @@ class DataManager {
         savedUser.setValue(user.address.city, forKey: "city")
         savedUser.setValue(user.address.country, forKey: "country")
 
-        do {
-            try managedContext.save()
-        } catch {
-            print("Failed saving user locally")
-        }
+        saveContext(with: "Failed saving user locally")
     }
 
     private func saveDevices(_ devices: [Device]) {
@@ -207,11 +210,7 @@ class DataManager {
             break
         }
 
-        do {
-            try managedContext.save()
-        } catch {
-            print("Failed saving device locally")
-        }
+        saveContext(with: "Failed saving device locally")
     }
 
     // MARK: - Update data
@@ -238,11 +237,7 @@ class DataManager {
                     break
                 }
 
-                do {
-                    try managedContext.save()
-                } catch {
-                    print("Failed updating data locally")
-                }
+                saveContext(with: "Failed updating data locally")
             }
         } catch {
             print("Failed fetching data for updating")
@@ -258,13 +253,31 @@ class DataManager {
             if let fetchdedUser = fetchedObjects.first {
                 fetchdedUser.setValue(user.firstName, forKey: "firstname")
                 fetchdedUser.setValue(user.lastName, forKey: "lastname")
-
-                do {
-                    try managedContext.save()
-                } catch {
-                    print("Failed updating data locally")
-                }
+                saveContext(with: "Failed updating data locally")
             }
+        } catch {
+            print("Failed fetching data for updating")
+        }
+    }
+
+    internal func delete(_ device: Device, completion: @escaping () -> Void) {
+        deleteLocalDevice(device)
+        guard let index = devices.firstIndex(where: {$0.id == device.id}) else { return }
+        devices.remove(at: index)
+        completion()
+    }
+
+    private func deleteLocalDevice(_ device: Device) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "DeviceEntity")
+        let predicate = NSPredicate(format: "id == %d", device.id)
+        fetchRequest.predicate = predicate
+        do {
+            let fetchedDevice = try managedContext.fetch(fetchRequest)
+            guard let deviceToDelete = fetchedDevice.first else { return }
+            managedContext.delete(deviceToDelete)
+            saveContext(with: "Failed deleting device")
         } catch {
             print("Failed fetching data for updating")
         }

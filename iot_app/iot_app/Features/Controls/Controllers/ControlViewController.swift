@@ -83,7 +83,14 @@ class ControlViewController: UIViewController {
     }
 
     @objc internal func deleteDevice() {
-        // override this method
+        let alert = UIAlertController(title: "Voulez-vous supprimer cet appareil ?", message: "Vous ne pourrez pas revenir en arrière", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Annuler", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Supprimer", style: .destructive, handler: { action in
+            DataManager.shared.delete(self.device) {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }))
+        present(alert, animated: true, completion: nil)
     }
 
 }
