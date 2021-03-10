@@ -32,6 +32,7 @@ class LightCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
+        setupAction()
     }
     
     required init?(coder: NSCoder) {
@@ -58,6 +59,16 @@ class LightCell: UICollectionViewCell {
         details.centerVertically(to: switcher)
         titleLabel.anchor(top: switcher.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: .smallSpace, paddingLeft: .mediumSpace, paddingRight: .mediumSpace)
         switcher.anchor(top: topAnchor, right: rightAnchor, paddingTop: .smallSpace, paddingRight: .smallSpace)
+    }
+
+    private func setupAction() {
+        switcher.addTarget(self, action: #selector(didSwitchToggle), for: .valueChanged)
+    }
+
+    @objc private func didSwitchToggle() {
+        guard var device = device else { return }
+        device.switchMode()
+        DataManager.shared.update(device)
     }
 
 }
