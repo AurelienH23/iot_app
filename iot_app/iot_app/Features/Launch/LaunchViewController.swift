@@ -13,8 +13,8 @@ class LaunchViewController: UIViewController {
     
     private let logo = UIImageView(image: UIImage(named: "logo"))
     private let loader = UIActivityIndicatorView(style: .white)
-    private let errorText = Caption("Erreur de connexion")
-    private let tryAgainButton = LightButton("Try again", target: self, action: #selector(reloadApplicationData))
+    private let errorText = Caption("networkError".localized())
+    private let tryAgainButton = LightButton("tryAgain".localized(), target: self, action: #selector(reloadApplicationData))
 
     // MARK: Lifecycle
 
@@ -61,7 +61,7 @@ class LaunchViewController: UIViewController {
         }
     }
 
-    @objc private func showErrorViews() { // TODO: hide or show views
+    @objc private func showErrorViews() {
         DispatchQueue.main.async { [unowned self] in
             loader.stopAnimating()
 

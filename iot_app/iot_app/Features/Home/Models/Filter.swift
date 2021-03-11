@@ -15,11 +15,11 @@ enum Filter {
     internal func displayedName() -> String {
         switch self {
         case .light:
-            return "Lights"
+            return "lights".localized()
         case .rollerShutter:
-            return "Roller shutters"
+            return "rollerShutters".localized()
         case .heater:
-            return "Heaters"
+            return "heaters".localized()
         }
     }
 

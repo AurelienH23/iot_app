@@ -144,6 +144,10 @@ extension Notification.Name {
 // MARK: String
 extension String {
 
+    func localized() -> String {
+        return NSLocalizedString(self, comment: self)
+    }
+
     func adaptedForUrl() -> String {
         return self.replacingOccurrences(of: " ", with: "%20")
     }

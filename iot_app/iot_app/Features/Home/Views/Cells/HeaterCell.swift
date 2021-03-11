@@ -23,7 +23,7 @@ class HeaterCell: UICollectionViewCell {
     // MARK: View elements
 
     private let icon = ProductIcon("thermometer")
-    private let valueLabel = Caption("20°C")
+    private let valueLabel = Caption()
     private let titleLabel = TitleLabel()
     private let switcher = Switcher()
 

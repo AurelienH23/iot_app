@@ -22,7 +22,7 @@ class RollerShutterCell: UICollectionViewCell {
     // MARK: View elements
     
     private let icon = ProductIcon("rays")
-    private let valueLabel = Caption("50%")
+    private let valueLabel = Caption()
     private let titleLabel = TitleLabel()
 
     // MARK: Lifecycle

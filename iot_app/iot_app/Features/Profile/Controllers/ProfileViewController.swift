@@ -14,9 +14,9 @@ class ProfileViewController: UIViewController {
     private let backButton = RoundedButton(image: "arrow.left", target: self, action: #selector(goBackHome))
     private let editButton = RoundedButton(image: "pencil", target: self, action: #selector(editProfile))
     private let nameLabel = TitleLabel(aligned: .center)
-    private let addressCaption = Caption("Address")
+    private let addressCaption = Caption("addressCaption".localized())
     private let addressCard = AddressCard()
-    private let birthdateCaption = Caption("Birthdate")
+    private let birthdateCaption = Caption("birthdateCaption".localized())
     private let birthdateCard = BirthdateCard()
 
     // MARK: Lifecycle
@@ -76,15 +76,15 @@ class ProfileViewController: UIViewController {
     }
 
     @objc private func editProfile() {
-        let alert = UIAlertController(title: "Modifier votre nom", message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: "editAlertTitle".localized(), message: nil, preferredStyle: .alert)
         alert.addTextField { (textfield) in
-            textfield.placeholder = "Prénom"
+            textfield.placeholder = "firstnamePlaceholder".localized()
         }
         alert.addTextField { (textfield) in
-            textfield.placeholder = "Nom"
+            textfield.placeholder = "lastnamePlaceholder".localized()
         }
-        alert.addAction(UIAlertAction(title: "Annuler", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Valider", style: .destructive, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "cancel".localized(), style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "validate".localized(), style: .destructive, handler: { (action) in
             guard let firstnameInput = alert.textFields?[0], firstnameInput.text != nil, firstnameInput.text != "",
                   let lastnameInput = alert.textFields?[1], lastnameInput.text != nil, lastnameInput.text != "" else { return }
             DataManager.shared.updateUser(firstname: firstnameInput.text!, lastname: lastnameInput.text!)

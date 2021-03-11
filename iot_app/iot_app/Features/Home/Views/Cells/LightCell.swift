@@ -23,7 +23,7 @@ class LightCell: UICollectionViewCell {
     // MARK: View elements
     
     private let icon = ProductIcon("lightbulb")
-    private let valueLabel = Caption("50%")
+    private let valueLabel = Caption()
     private let titleLabel = TitleLabel()
     private let switcher = Switcher()
 

@@ -25,7 +25,7 @@ class MapButton: UIButton {
     
     private func setupViews() {
         anchor(height: .standardTouchSpace)
-        setTitle("Voir sur la carte", for: .normal)
+        setTitle("goToMap".localized(), for: .normal)
         setTitleColor(.accentColor, for: .normal)
     }
 

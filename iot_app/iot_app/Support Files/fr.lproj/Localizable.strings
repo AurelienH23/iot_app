@@ -1,0 +1,26 @@
+/* 
+  Localizable.strings
+  iot_app
+
+  Created by Aurélien Haie on 10/03/2021.
+  
+*/
+// Launch
+"networkError" = "Erreur de connexion";
+"tryAgain" = "Réessayer";
+
+// Home
+"greetings" = "Bienvenue,\n";
+"lights" = "Lumières";
+"rollerShutters" = "Volets";
+"heaters" = "Radiateurs";
+
+// Profile
+"addressCaption" = "Adresse";
+"birthdateCaption" = "Date de naissance";
+"editAlertTitle" = "Modifier votre nom";
+"firstnamePlaceholder" = "Prénom";
+"lastnamePlaceholder" = "Nom";
+"cancel" = "Annuler";
+"validate" = "Valider";
+"goToMap" = "Voir sur la carte";
